@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="ExternalOrgConfig" type="externalOrgConfig" />
+  <xs:element name="ExternalOrgConfigList" type="externalOrgConfigList" />
+  <xs:complexType name="externalOrgConfigList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ExternalOrgConfig" type="externalOrgConfig" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="externalOrgConfig">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleExternalOrgConfig">
+                <xs:choice>
+                  <xs:element name="ExternalVaultSid" type="xs:long" />
+                  <xs:element name="ExternalVaultRef" type="xs:string" />
+                  <xs:element name="ExternalVaultIsn" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element minOccurs="0" name="ExternalOrgConfigSid" type="xs:long" />
+              <xs:element minOccurs="0" name="ExternalOrgConfigRef" type="xs:string" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simpleExternalOrgConfig">
+    <xs:sequence>
+      <xs:element name="ExternalOrgName" type="xs:string" />
+      <xs:choice>
+        <xs:element name="LocalOrgSid" type="xs:long" />
+        <xs:element name="LocalOrgRef" type="xs:string" />
+        <xs:element name="LocalOrgName" type="xs:string" />
+      </xs:choice>
+      <xs:element minOccurs="0" default="true" name="IsAllowed" type="xs:boolean" />
+      <xs:choice minOccurs="0">
+        <xs:element name="DefaultPmgSid" type="xs:long" />
+        <xs:element name="DefaultPmgRef" type="xs:string" />
+        <xs:element name="DefaultPmgFilter" type="filter" />
+      </xs:choice>
+      <xs:choice minOccurs="0">
+        <xs:element name="DefaultDptSid" type="xs:long" />
+        <xs:element name="DefaultDptRef" type="xs:string" />
+        <xs:element name="DefaultDptFilter" type="filter" />
+      </xs:choice>
+      <xs:choice minOccurs="0">
+        <xs:element name="DefaultTransactionStateSid" type="xs:long" />
+        <xs:element name="DefaultTransactionStateRef" type="xs:string" />
+        <xs:element name="DefaultTransactionStateFilter" type="filter" />
+      </xs:choice>
+      <xs:choice minOccurs="0">
+        <xs:element name="DefaultDocumentStateSid" type="xs:long" />
+        <xs:element name="DefaultDocumentStateRef" type="xs:string" />
+        <xs:element name="DefaultDocumentStateFilter" type="filter" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="ImportDocMapList" type="importDocMapList" />
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="simpleExternalOrgConfigList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ExternalOrgConfig" type="simpleExternalOrgConfig" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="importDocMapList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ImportDocMap" type="importDocMap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="importDocMap">
+    <xs:sequence>
+      <xs:element name="SenderIndStdDocSid" type="xs:long" />
+      <xs:element minOccurs="0" name="SenderIndStdDocName" type="xs:string" />
+      <xs:choice>
+        <xs:element name="ReceiverIndStdDocSid" type="xs:long" />
+        <xs:element name="ReceiverIndStdDocRef" type="xs:string" />
+        <xs:element name="ReceiverIndStdDocFilter" type="filter" />
+      </xs:choice>
+      <xs:choice>
+        <xs:element name="ReceiverPmgSid" type="xs:long" />
+        <xs:element name="ReceiverPmgRef" type="xs:string" />
+        <xs:element name="ReceiverPmgFilter" type="filter" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

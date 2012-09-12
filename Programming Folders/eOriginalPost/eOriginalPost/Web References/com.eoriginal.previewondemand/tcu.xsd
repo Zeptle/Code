@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="global.xsd" />
+  <xs:include schemaLocation="action.xsd" />
+  <xs:include schemaLocation="apg.xsd" />
+  <xs:include schemaLocation="disposition.xsd" />
+  <xs:include schemaLocation="fft.xsd" />
+  <xs:include schemaLocation="transactionType.xsd" />
+  <xs:include schemaLocation="dpt.xsd" />
+  <xs:include schemaLocation="group.xsd" />
+  <xs:include schemaLocation="indStdDoc.xsd" />
+  <xs:include schemaLocation="industry.xsd" />
+  <xs:include schemaLocation="externalVault.xsd" />
+  <xs:include schemaLocation="externalOrgConfig.xsd" />
+  <xs:include schemaLocation="organization.xsd" />
+  <xs:include schemaLocation="pmg.xsd" />
+  <xs:include schemaLocation="role.xsd" />
+  <xs:include schemaLocation="state.xsd" />
+  <xs:include schemaLocation="token.xsd" />
+  <xs:include schemaLocation="user.xsd" />
+  <xs:include schemaLocation="watermark.xsd" />
+  <xs:element name="Tcu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="Global" />
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="Action" />
+          <xs:element ref="ActionList" />
+          <xs:element ref="Apg" />
+          <xs:element ref="ApgList" />
+          <xs:element ref="Disposition" />
+          <xs:element ref="DispList" />
+          <xs:element ref="Dpt" />
+          <xs:element ref="DptList" />
+          <xs:element ref="ExternalOrgConfig" />
+          <xs:element ref="ExternalOrgConfigList" />
+          <xs:element ref="ExternalVault" />
+          <xs:element ref="ExternalVaultList" />
+          <xs:element ref="FormFieldsTemplate" />
+          <xs:element ref="FormFieldsTemplateList" />
+          <xs:element ref="Group" />
+          <xs:element ref="GroupList" />
+          <xs:element ref="IndStdDoc" />
+          <xs:element ref="IndStdDocList" />
+          <xs:element ref="Industry" />
+          <xs:element ref="IndustryList" />
+          <xs:element ref="Organization" />
+          <xs:element ref="OrgList" />
+          <xs:element ref="Pmg" />
+          <xs:element ref="PmgList" />
+          <xs:element ref="Role" />
+          <xs:element ref="RoleList" />
+          <xs:element ref="State" />
+          <xs:element ref="StateList" />
+          <xs:element ref="Token" />
+          <xs:element ref="TokenList" />
+          <xs:element ref="TransactionType" />
+          <xs:element ref="TransactionTypeList" />
+          <xs:element ref="User" />
+          <xs:element ref="UserList" />
+          <xs:element ref="Watermark" />
+          <xs:element ref="WatermarkList" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

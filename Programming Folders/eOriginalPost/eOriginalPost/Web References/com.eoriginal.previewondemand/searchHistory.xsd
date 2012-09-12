@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sh="http://www.eoriginal.com/reports/SearchHistoryReport" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/reports/SearchHistoryReport" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="eoHistory">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="1" name="startDate" type="string" />
+        <element minOccurs="0" maxOccurs="1" name="endDate" type="string" />
+        <element minOccurs="0" maxOccurs="1" name="eventNameList" type="sh:EventNameList" />
+        <element minOccurs="0" maxOccurs="1" name="participantNameList" type="sh:ParticipantNameList" />
+        <element minOccurs="0" maxOccurs="1" name="auditable" type="string" />
+        <element minOccurs="0" maxOccurs="1" name="transactionList" type="sh:TransactionList" />
+        <element minOccurs="0" maxOccurs="1" name="documentProfileList" type="sh:DocumentProfileList" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="EventNameList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="eventName" type="sh:EventName" />
+    </sequence>
+  </complexType>
+  <complexType name="ParticipantNameList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="participant" type="sh:Participant" />
+    </sequence>
+  </complexType>
+  <complexType name="TransactionList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="transaction" type="sh:Transaction" />
+    </sequence>
+  </complexType>
+  <complexType name="DocumentProfileList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="documentProfile" type="sh:DocumentProfile" />
+    </sequence>
+  </complexType>
+  <complexType name="EventName">
+    <attribute name="name" type="string" />
+  </complexType>
+  <complexType name="Participant">
+    <attribute name="firstName" type="string" />
+    <attribute name="lastName" type="string" />
+  </complexType>
+  <complexType name="Transaction">
+    <attribute name="sid" type="positiveInteger" />
+  </complexType>
+  <complexType name="DocumentProfile">
+    <attribute name="sid" type="positiveInteger" />
+  </complexType>
+</schema>

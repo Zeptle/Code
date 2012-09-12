@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sh="http://www.eoriginal.com/reports/SearchHistoryReport" xmlns:too="http://www.eoriginal.com/ecore/too" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://eoriginal.com/ecorews" xmlns:sa="http://www.eoriginal.com/ecore/sendAlert" xmlns:d="http://www.eoriginal.com/ecore/destruction" xmlns:e="http://www.eoriginal.com/ecore/export" xmlns:p="http://www.eoriginal.com/ecore/print" xmlns:ad="http://www.eoriginal.com/Tcu" xmlns:auth="http://www.eoriginal.com/ssweb/GetAuthCode" targetNamespace="http://eoriginal.com/ecorews" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://eoriginal.com/ecorews">
+      <xs:include schemaLocation="ecore-ws-schema.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/reports/SearchHistoryReport">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/reports/searchHistory.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ecore/print">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/print.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ecore/destruction">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/destruction.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ecore/too">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/transfer.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ecore/export">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/export.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ssweb/GetAuthCode">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/ssweb/get-auth-code.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/ecore/sendAlert">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/sendAlert.xsd" />
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.eoriginal.com/Tcu">
+      <xs:include schemaLocation="http://schemas.eoriginal.com/releases/6.11/admin/vault-info.xsd" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="defaultResponse">
+    <wsdl:part name="defaultResponse" element="tns:defaultResponse" />
+  </wsdl:message>
+  <wsdl:message name="defaultRequest">
+    <wsdl:part name="defaultRequest" element="tns:defaultRequest" />
+  </wsdl:message>
+  <wsdl:message name="setPasswordRequest">
+    <wsdl:part name="setPasswordRequest" element="tns:setPasswordRequest" />
+  </wsdl:message>
+  <wsdl:message name="setAliasRequest">
+    <wsdl:part name="setAliasRequest" element="tns:setAliasRequest" />
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="loginRequest" element="tns:loginRequest" />
+  </wsdl:message>
+  <wsdl:message name="transactions">
+    <wsdl:part name="transactions" element="tns:transactions" />
+  </wsdl:message>
+  <wsdl:message name="transactionDetails">
+    <wsdl:part name="transactionDetails" element="tns:transactionDetails" />
+  </wsdl:message>
+  <wsdl:message name="createTransactionRequest">
+    <wsdl:part name="createTransactionRequest" element="tns:createTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchTransactions">
+    <wsdl:part name="searchTransactions" element="tns:searchTransactions" />
+  </wsdl:message>
+  <wsdl:message name="files">
+    <wsdl:part name="files" element="tns:files" />
+  </wsdl:message>
+  <wsdl:message name="documents">
+    <wsdl:part name="documents" element="tns:documents" />
+  </wsdl:message>
+  <wsdl:message name="documentDetails">
+    <wsdl:part name="documentDetails" element="tns:documentDetails" />
+  </wsdl:message>
+  <wsdl:message name="createDocumentRequest">
+    <wsdl:part name="createDocumentRequest" element="tns:createDocumentRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchDocuments">
+    <wsdl:part name="searchDocuments" element="tns:searchDocuments" />
+  </wsdl:message>
+  <wsdl:message name="versions">
+    <wsdl:part name="versions" element="tns:versions" />
+  </wsdl:message>
+  <wsdl:message name="getCopyRequests">
+    <wsdl:part name="getCopyRequests" element="tns:getCopyRequests" />
+  </wsdl:message>
+  <wsdl:message name="storeDocumentRequests">
+    <wsdl:part name="storeDocumentRequests" element="tns:storeDocumentRequests" />
+  </wsdl:message>
+  <wsdl:message name="searchHistory">
+    <wsdl:part name="searchHistory" element="sh:eoHistory" />
+  </wsdl:message>
+  <wsdl:message name="events">
+    <wsdl:part name="events" element="tns:events" />
+  </wsdl:message>
+  <wsdl:message name="configureVaultRequest">
+    <wsdl:part name="configureVaultRequest" element="tns:configureVaultRequest" />
+  </wsdl:message>
+  <wsdl:message name="vaultInfo">
+    <wsdl:part name="vaultInfo" element="ad:vaultInfo" />
+  </wsdl:message>
+  <wsdl:message name="sendAlertRequest">
+    <wsdl:part name="sendAlertRequest" element="sa:eoSendAlert" />
+  </wsdl:message>
+  <wsdl:message name="insertFormFieldsRequests">
+    <wsdl:part name="insertFormFieldsRequests" element="tns:insertFormFieldsRequests" />
+  </wsdl:message>
+  <wsdl:message name="getFormFieldsRequest">
+    <wsdl:part name="getFormFieldsRequest" element="tns:getFormFieldsRequest" />
+  </wsdl:message>
+  <wsdl:message name="editFormFieldsRequests">
+    <wsdl:part name="editFormFieldsRequests" element="tns:editFormFieldsRequests" />
+  </wsdl:message>
+  <wsdl:message name="mergeDataRequests">
+    <wsdl:part name="mergeDataRequests" element="tns:mergeDataRequests" />
+  </wsdl:message>
+  <wsdl:message name="removeFormFieldsRequests">
+    <wsdl:part name="removeFormFieldsRequests" element="tns:removeFormFieldsRequests" />
+  </wsdl:message>
+  <wsdl:message name="addSignatureRequests">
+    <wsdl:part name="addSignatureRequests" element="tns:addSignatureRequests" />
+  </wsdl:message>
+  <wsdl:message name="watermarkDocumentRequests">
+    <wsdl:part name="watermarkDocumentRequests" element="tns:watermarkDocumentRequests" />
+  </wsdl:message>
+  <wsdl:message name="signaturePrepRequests">
+    <wsdl:part name="signaturePrepRequests" element="tns:signaturePrepRequests" />
+  </wsdl:message>
+  <wsdl:message name="signRequests">
+    <wsdl:part name="signRequests" element="tns:signRequests" />
+  </wsdl:message>
+  <wsdl:message name="nonVaultedDocuments">
+    <wsdl:part name="nonVaultedDocuments" element="tns:nonVaultedDocuments" />
+  </wsdl:message>
+  <wsdl:message name="configurePathRequests">
+    <wsdl:part name="configurePathRequests" element="tns:configurePathRequests" />
+  </wsdl:message>
+  <wsdl:message name="configureSortOrderRequests">
+    <wsdl:part name="configureSortOrderRequests" element="tns:configureSortOrderRequests" />
+  </wsdl:message>
+  <wsdl:message name="configureRolesRequests">
+    <wsdl:part name="configureRolesRequests" element="tns:configureRolesRequests" />
+  </wsdl:message>
+  <wsdl:message name="configureInvitationRequests">
+    <wsdl:part name="configureInvitationRequests" element="tns:configureInvitationRequests" />
+  </wsdl:message>
+  <wsdl:message name="searchPathTransactionsRequest">
+    <wsdl:part name="searchPathTransactionsRequest" element="tns:searchPathTransactionsRequest" />
+  </wsdl:message>
+  <wsdl:message name="pathTransactions">
+    <wsdl:part name="pathTransactions" element="tns:pathTransactions" />
+  </wsdl:message>
+  <wsdl:message name="batch">
+    <wsdl:part name="batch" element="tns:batch" />
+  </wsdl:message>
+  <wsdl:message name="certifiedPrint">
+    <wsdl:part name="certifiedPrint" element="tns:certifiedPrint" />
+  </wsdl:message>
+  <wsdl:message name="certifiedPrintRequest">
+    <wsdl:part name="certifiedPrintRequest" element="p:eoCertifiedPrintInstructions" />
+  </wsdl:message>
+  <wsdl:message name="destruction">
+    <wsdl:part name="destruction" element="tns:destruction" />
+  </wsdl:message>
+  <wsdl:message name="destructionRequest">
+    <wsdl:part name="destructionRequest" element="d:eoDestructionInstructions" />
+  </wsdl:message>
+  <wsdl:message name="export">
+    <wsdl:part name="export" element="tns:export" />
+  </wsdl:message>
+  <wsdl:message name="exportRequest">
+    <wsdl:part name="exportRequest" element="e:eoExportInstructions" />
+  </wsdl:message>
+  <wsdl:message name="authorizeExport">
+    <wsdl:part name="authorizeExport" element="tns:authorizeExport" />
+  </wsdl:message>
+  <wsdl:message name="verifyExport">
+    <wsdl:part name="verifyExport" element="tns:verifyExport" />
+  </wsdl:message>
+  <wsdl:message name="transfer">
+    <wsdl:part name="transfer" element="tns:transfer" />
+  </wsdl:message>
+  <wsdl:message name="transferRequest">
+    <wsdl:part name="transferRequest" element="tns:transferRequest" />
+  </wsdl:message>
+  <wsdl:message name="transferResults">
+    <wsdl:part name="transferResults" element="tns:transferResults" />
+  </wsdl:message>
+  <wsdl:message name="sellerInitiate">
+    <wsdl:part name="sellerInitiate" element="too:sellerInitiate" />
+  </wsdl:message>
+  <wsdl:message name="buyerAccept">
+    <wsdl:part name="buyerAccept" element="tns:buyerAccept" />
+  </wsdl:message>
+  <wsdl:message name="paperIn">
+    <wsdl:part name="paperIn" element="tns:paperIn" />
+  </wsdl:message>
+  <wsdl:message name="paperInRequest">
+    <wsdl:part name="paperInRequest" element="tns:paperInRequest" />
+  </wsdl:message>
+  <wsdl:message name="authorizePaperIn">
+    <wsdl:part name="authorizePaperIn" element="tns:authorizePaperIn" />
+  </wsdl:message>
+  <wsdl:message name="tolec">
+    <wsdl:part name="tolec" element="tns:tolec" />
+  </wsdl:message>
+  <wsdl:message name="tolecRequest">
+    <wsdl:part name="tolecRequest" element="tns:tolecRequest" />
+  </wsdl:message>
+  <wsdl:message name="tolecResponses">
+    <wsdl:part name="tolecResponses" element="tns:tolecResponses" />
+  </wsdl:message>
+  <wsdl:message name="getTolecResponseRequest">
+    <wsdl:part name="getTolecResponseRequest" element="tns:getTolecResponseRequest" />
+  </wsdl:message>
+  <wsdl:message name="throwEventRequest">
+    <wsdl:part name="throwEventRequest" element="tns:throwEventRequest" />
+  </wsdl:message>
+  <wsdl:message name="addCommentRequest">
+    <wsdl:part name="addCommentRequest" element="tns:addCommentRequest" />
+  </wsdl:message>
+  <wsdl:message name="getCommentsRequest">
+    <wsdl:part name="getCommentsRequest" element="tns:getCommentsRequest" />
+  </wsdl:message>
+  <wsdl:message name="comments">
+    <wsdl:part name="comments" element="tns:comments" />
+  </wsdl:message>
+  <wsdl:message name="authCode">
+    <wsdl:part name="authCode" element="tns:authCode" />
+  </wsdl:message>
+  <wsdl:message name="getAuthCodeRequest">
+    <wsdl:part name="getAuthCodeRequest" element="auth:eoGetAuthCode" />
+  </wsdl:message>
+  <wsdl:portType name="eoWSDLInterface">
+    <wsdl:operation name="eoSetPassword">
+      <wsdl:input name="setPasswordRequest" message="tns:setPasswordRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoLoginSetPassword">
+      <wsdl:input name="setPasswordRequest" message="tns:setPasswordRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRollbackTransaction">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionStatus">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoBeginTransaction">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoLogout">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCommitTransaction">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoLogin">
+      <wsdl:input name="loginRequest" message="tns:loginRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSetAlias">
+      <wsdl:input name="setAliasRequest" message="tns:setAliasRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoClearAlias">
+      <wsdl:input name="defaultRequest" message="tns:defaultRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCreateTransaction">
+      <wsdl:input name="createTransactionRequest" message="tns:createTransactionRequest" />
+      <wsdl:output name="transactions" message="tns:transactions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionProperties">
+      <wsdl:input name="transactions" message="tns:transactions" />
+      <wsdl:output name="transactions" message="tns:transactions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSetTransactionProperties">
+      <wsdl:input name="transactions" message="tns:transactions" />
+      <wsdl:output name="transactions" message="tns:transactions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoDeleteTransaction">
+      <wsdl:input name="transactions" message="tns:transactions" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchTransactions">
+      <wsdl:input name="searchTransactions" message="tns:searchTransactions" />
+      <wsdl:output name="transactions" message="tns:transactions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionDocumentList">
+      <wsdl:input name="transactions" message="tns:transactions" />
+      <wsdl:output name="transactionDetails" message="tns:transactionDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCreateDocument">
+      <wsdl:input name="createDocumentRequest" message="tns:createDocumentRequest" />
+      <wsdl:output name="documents" message="tns:documents" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentProperties">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="documents" message="tns:documents" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSetDocumentProperties">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="documents" message="tns:documents" />
+    </wsdl:operation>
+    <wsdl:operation name="eoDeleteDocument">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentRevisionFromVersion">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchDocuments">
+      <wsdl:input name="searchDocuments" message="tns:searchDocuments" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoStoreDocument">
+      <wsdl:input name="storeDocumentRequests" message="tns:storeDocumentRequests" />
+      <wsdl:output name="versions" message="tns:versions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchHistory">
+      <wsdl:input name="searchHistory" message="tns:searchHistory" />
+      <wsdl:output name="events" message="tns:events" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentActivityHistoryReport">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="files" message="tns:files" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetCopy">
+      <wsdl:input name="getCopyRequests" message="tns:getCopyRequests" />
+      <wsdl:output name="versions" message="tns:versions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureVault">
+      <wsdl:input name="configureVaultRequest" message="tns:configureVaultRequest" />
+      <wsdl:output name="vaultInfo" message="tns:vaultInfo" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRejuvenateAuditTrail">
+      <wsdl:input name="documents" message="tns:documents" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSendAlert">
+      <wsdl:input name="sendAlertRequest" message="tns:sendAlertRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoInsertFormFields">
+      <wsdl:input name="insertFormFieldsRequests" message="tns:insertFormFieldsRequests" />
+      <wsdl:output name="versions" message="tns:versions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetFormFields">
+      <wsdl:input name="getFormFieldsRequest" message="tns:getFormFieldsRequest" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoEditFormFields">
+      <wsdl:input name="editFormFieldsRequests" message="tns:editFormFieldsRequests" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoMergeData">
+      <wsdl:input name="mergeDataRequests" message="tns:mergeDataRequests" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRemoveFormFields">
+      <wsdl:input name="removeFormFieldsRequests" message="tns:removeFormFieldsRequests" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoAddDocumentSignature">
+      <wsdl:input name="addSignatureRequests" message="tns:addSignatureRequests" />
+      <wsdl:output name="documentDetails" message="tns:documentDetails" />
+    </wsdl:operation>
+    <wsdl:operation name="eoWatermarkDocumentNoVault">
+      <wsdl:input name="watermarkDocumentRequests" message="tns:watermarkDocumentRequests" />
+      <wsdl:output name="files" message="tns:files" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSignaturePrepNoVault">
+      <wsdl:input name="signaturePrepRequests" message="tns:signaturePrepRequests" />
+      <wsdl:output name="nonVaultedDocuments" message="tns:nonVaultedDocuments" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSignNoVault">
+      <wsdl:input name="signRequests" message="tns:signRequests" />
+      <wsdl:output name="nonVaultedDocuments" message="tns:nonVaultedDocuments" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigurePath">
+      <wsdl:input name="configurePathRequests" message="tns:configurePathRequests" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureSortOrder">
+      <wsdl:input name="configureSortOrderRequests" message="tns:configureSortOrderRequests" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureRoles">
+      <wsdl:input name="configureRolesRequests" message="tns:configureRolesRequests" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureInvitation">
+      <wsdl:input name="configureInvitationRequests" message="tns:configureInvitationRequests" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchPathTransactions">
+      <wsdl:input name="searchPathTransactionsRequest" message="tns:searchPathTransactionsRequest" />
+      <wsdl:output name="pathTransactions" message="tns:pathTransactions" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestCertifiedPrint">
+      <wsdl:input name="certifiedPrintRequest" message="tns:certifiedPrintRequest" />
+      <wsdl:output name="certifiedPrint" message="tns:certifiedPrint" />
+    </wsdl:operation>
+    <wsdl:operation name="eoVerifyCertifiedPrint">
+      <wsdl:input name="certifiedPrint" message="tns:certifiedPrint" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelCertifiedPrint">
+      <wsdl:input name="certifiedPrint" message="tns:certifiedPrint" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestDestruction">
+      <wsdl:input name="destructionRequest" message="tns:destructionRequest" />
+      <wsdl:output name="destruction" message="tns:destruction" />
+    </wsdl:operation>
+    <wsdl:operation name="eoAuthorizeDestruction">
+      <wsdl:input name="destruction" message="tns:destruction" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelDestruction">
+      <wsdl:input name="destruction" message="tns:destruction" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRejectDestruction">
+      <wsdl:input name="destruction" message="tns:destruction" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestExport">
+      <wsdl:input name="exportRequest" message="tns:exportRequest" />
+      <wsdl:output name="export" message="tns:export" />
+    </wsdl:operation>
+    <wsdl:operation name="eoAuthorizeExport">
+      <wsdl:input name="authorizeExport" message="tns:authorizeExport" />
+      <wsdl:output name="export" message="tns:export" />
+    </wsdl:operation>
+    <wsdl:operation name="eoVerifyExport">
+      <wsdl:input name="verifyExport" message="tns:verifyExport" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelExport">
+      <wsdl:input name="export" message="tns:export" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerInitiateTransfer">
+      <wsdl:input name="sellerInitiate" message="tns:sellerInitiate" />
+      <wsdl:output name="transfer" message="tns:transfer" />
+    </wsdl:operation>
+    <wsdl:operation name="eoBuyerAcceptTransfer">
+      <wsdl:input name="buyerAccept" message="tns:buyerAccept" />
+      <wsdl:output name="transfer" message="tns:transfer" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerConfirmTransfer">
+      <wsdl:input name="transfer" message="tns:transfer" />
+      <wsdl:output name="transferResults" message="tns:transferResults" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerCancelTransfer">
+      <wsdl:input name="transfer" message="tns:transfer" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoBuyerRejectTransfer">
+      <wsdl:input name="transfer" message="tns:transfer" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoTransferOwnership">
+      <wsdl:input name="transferRequest" message="tns:transferRequest" />
+      <wsdl:output name="transferResults" message="tns:transferResults" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetBatchRequestStatus">
+      <wsdl:input name="batch" message="tns:batch" />
+      <wsdl:output name="batch" message="tns:batch" />
+    </wsdl:operation>
+    <wsdl:operation name="eoSubmitPaperIn">
+      <wsdl:input name="paperInRequest" message="tns:paperInRequest" />
+      <wsdl:output name="paperIn" message="tns:paperIn" />
+    </wsdl:operation>
+    <wsdl:operation name="eoConfirmPaperIn">
+      <wsdl:input name="authorizePaperIn" message="tns:authorizePaperIn" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelPaperIn">
+      <wsdl:input name="paperIn" message="tns:paperIn" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoInitiateTolec">
+      <wsdl:input name="tolecRequest" message="tns:tolecRequest" />
+      <wsdl:output name="tolec" message="tns:tolec" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTolecResponse">
+      <wsdl:input name="getTolecResponseRequest" message="tns:getTolecResponseRequest" />
+      <wsdl:output name="tolecResponses" message="tns:tolecResponses" />
+    </wsdl:operation>
+    <wsdl:operation name="eoThrowEvent">
+      <wsdl:input name="throwEventRequest" message="tns:throwEventRequest" />
+      <wsdl:output name="defaultResponse" message="tns:defaultResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eoAddComment">
+      <wsdl:input name="addCommentRequest" message="tns:addCommentRequest" />
+      <wsdl:output name="comments" message="tns:comments" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetComments">
+      <wsdl:input name="getCommentsRequest" message="tns:getCommentsRequest" />
+      <wsdl:output name="comments" message="tns:comments" />
+    </wsdl:operation>
+    <wsdl:operation name="eoGetAuthCode">
+      <wsdl:input name="getAuthCodeRequest" message="tns:getAuthCodeRequest" />
+      <wsdl:output name="authCode" message="tns:authCode" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eoWSDLInterfaceSoap11" type="tns:eoWSDLInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="eoSetPassword">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSetPassword" />
+      <wsdl:input name="setPasswordRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoLoginSetPassword">
+      <soap:operation soapAction="http://www.eoriginal.com/eoLoginSetPassword" />
+      <wsdl:input name="setPasswordRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRollbackTransaction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRollbackTransaction" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionStatus">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetTransactionStatus" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoBeginTransaction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoBeginTransaction" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoLogout">
+      <soap:operation soapAction="http://www.eoriginal.com/eoLogout" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCommitTransaction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCommitTransaction" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoLogin">
+      <soap:operation soapAction="http://www.eoriginal.com/eoLogin" />
+      <wsdl:input name="loginRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSetAlias">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSetAlias" />
+      <wsdl:input name="setAliasRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoClearAlias">
+      <soap:operation soapAction="http://www.eoriginal.com/eoClearAlias" />
+      <wsdl:input name="defaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCreateTransaction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCreateTransaction" />
+      <wsdl:input name="createTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transactions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionProperties">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetTransactionProperties" />
+      <wsdl:input name="transactions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transactions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSetTransactionProperties">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSetTransactionProperties" />
+      <wsdl:input name="transactions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transactions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoDeleteTransaction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoDeleteTransaction" />
+      <wsdl:input name="transactions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchTransactions">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSearchTransactions" />
+      <wsdl:input name="searchTransactions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transactions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTransactionDocumentList">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetTransactionDocumentList" />
+      <wsdl:input name="transactions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transactionDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCreateDocument">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCreateDocument" />
+      <wsdl:input name="createDocumentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documents">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentProperties">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetDocumentProperties" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documents">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSetDocumentProperties">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSetDocumentProperties" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documents">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoDeleteDocument">
+      <soap:operation soapAction="http://www.eoriginal.com/eoDeleteDocument" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentRevisionFromVersion">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetDocumentRevisionFromVersion" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchDocuments">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSearchDocuments" />
+      <wsdl:input name="searchDocuments">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoStoreDocument">
+      <soap:operation soapAction="http://www.eoriginal.com/eoStoreDocument" />
+      <wsdl:input name="storeDocumentRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="versions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchHistory">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSearchHistory" />
+      <wsdl:input name="searchHistory">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="events">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetDocumentActivityHistoryReport">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetDocumentActivityHistoryReport" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="files">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetCopy">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetCopy" />
+      <wsdl:input name="getCopyRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="versions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureVault">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfigureVault" />
+      <wsdl:input name="configureVaultRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="vaultInfo">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRejuvenateAuditTrail">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRejuvenateAuditTrail" />
+      <wsdl:input name="documents">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSendAlert">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSendAlert" />
+      <wsdl:input name="sendAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoInsertFormFields">
+      <soap:operation soapAction="http://www.eoriginal.com/eoInsertFormFields" />
+      <wsdl:input name="insertFormFieldsRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="versions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetFormFields">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetFormFields" />
+      <wsdl:input name="getFormFieldsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoEditFormFields">
+      <soap:operation soapAction="http://www.eoriginal.com/eoEditFormFields" />
+      <wsdl:input name="editFormFieldsRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoMergeData">
+      <soap:operation soapAction="http://www.eoriginal.com/eoMergeData" />
+      <wsdl:input name="mergeDataRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRemoveFormFields">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRemoveFormFields" />
+      <wsdl:input name="removeFormFieldsRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoAddDocumentSignature">
+      <soap:operation soapAction="http://www.eoriginal.com/eoAddDocumentSignature" />
+      <wsdl:input name="addSignatureRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDetails">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoWatermarkDocumentNoVault">
+      <soap:operation soapAction="http://www.eoriginal.com/eoWatermarkDocumentNoVault" />
+      <wsdl:input name="watermarkDocumentRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="files">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSignaturePrepNoVault">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSignaturePrepNoVault" />
+      <wsdl:input name="signaturePrepRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nonVaultedDocuments">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSignNoVault">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSignNoVault" />
+      <wsdl:input name="signRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nonVaultedDocuments">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigurePath">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfigurePath" />
+      <wsdl:input name="configurePathRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureSortOrder">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfigureSortOrder" />
+      <wsdl:input name="configureSortOrderRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureRoles">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfigureRoles" />
+      <wsdl:input name="configureRolesRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfigureInvitation">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfigureInvitation" />
+      <wsdl:input name="configureInvitationRequests">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSearchPathTransactions">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSearchPathTransactions" />
+      <wsdl:input name="searchPathTransactionsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pathTransactions">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestCertifiedPrint">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRequestCertifiedPrint" />
+      <wsdl:input name="certifiedPrintRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="certifiedPrint">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoVerifyCertifiedPrint">
+      <soap:operation soapAction="http://www.eoriginal.com/eoVerifyCertifiedPrint" />
+      <wsdl:input name="certifiedPrint">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelCertifiedPrint">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCancelCertifiedPrint" />
+      <wsdl:input name="certifiedPrint">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestDestruction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRequestDestruction" />
+      <wsdl:input name="destructionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="destruction">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoAuthorizeDestruction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoAuthorizeDestruction" />
+      <wsdl:input name="destruction">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelDestruction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCancelDestruction" />
+      <wsdl:input name="destruction">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRejectDestruction">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRejectDestruction" />
+      <wsdl:input name="destruction">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoRequestExport">
+      <soap:operation soapAction="http://www.eoriginal.com/eoRequestExport" />
+      <wsdl:input name="exportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="export">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoAuthorizeExport">
+      <soap:operation soapAction="http://www.eoriginal.com/eoAuthorizeExport" />
+      <wsdl:input name="authorizeExport">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="export">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoVerifyExport">
+      <soap:operation soapAction="http://www.eoriginal.com/eoVerifyExport" />
+      <wsdl:input name="verifyExport">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelExport">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCancelExport" />
+      <wsdl:input name="export">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerInitiateTransfer">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSellerInitiateTransfer" />
+      <wsdl:input name="sellerInitiate">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transfer">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoBuyerAcceptTransfer">
+      <soap:operation soapAction="http://www.eoriginal.com/eoBuyerAcceptTransfer" />
+      <wsdl:input name="buyerAccept">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transfer">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerConfirmTransfer">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSellerConfirmTransfer" />
+      <wsdl:input name="transfer">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferResults">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSellerCancelTransfer">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSellerCancelTransfer" />
+      <wsdl:input name="transfer">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoBuyerRejectTransfer">
+      <soap:operation soapAction="http://www.eoriginal.com/eoBuyerRejectTransfer" />
+      <wsdl:input name="transfer">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoTransferOwnership">
+      <soap:operation soapAction="http://www.eoriginal.com/eoTransferOwnership" />
+      <wsdl:input name="transferRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferResults">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetBatchRequestStatus">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetBatchRequestStatus" />
+      <wsdl:input name="batch">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="batch">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoSubmitPaperIn">
+      <soap:operation soapAction="http://www.eoriginal.com/eoSubmitPaperIn" />
+      <wsdl:input name="paperInRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="paperIn">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoConfirmPaperIn">
+      <soap:operation soapAction="http://www.eoriginal.com/eoConfirmPaperIn" />
+      <wsdl:input name="authorizePaperIn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoCancelPaperIn">
+      <soap:operation soapAction="http://www.eoriginal.com/eoCancelPaperIn" />
+      <wsdl:input name="paperIn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoInitiateTolec">
+      <soap:operation soapAction="http://www.eoriginal.com/eoInitiateTolec" />
+      <wsdl:input name="tolecRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="tolec">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetTolecResponse">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetTolecResponse" />
+      <wsdl:input name="getTolecResponseRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="tolecResponses">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoThrowEvent">
+      <soap:operation soapAction="http://www.eoriginal.com/eoThrowEvent" />
+      <wsdl:input name="throwEventRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="defaultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoAddComment">
+      <soap:operation soapAction="http://www.eoriginal.com/eoAddComment" />
+      <wsdl:input name="addCommentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="comments">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetComments">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetComments" />
+      <wsdl:input name="getCommentsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="comments">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eoGetAuthCode">
+      <soap:operation soapAction="http://www.eoriginal.com/eoGetAuthCode" />
+      <wsdl:input name="getAuthCodeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authCode">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="eoWSDLService">
+    <wsdl:port name="eoWSDLInterfaceSoap11" binding="tns:eoWSDLInterfaceSoap11">
+      <soap:address location="https://previewondemand.eoriginal.com:443/ecoreSOAP/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

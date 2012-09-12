@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ecore/export" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ecore/export" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoExportInstructions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="batchName" type="xs:string" />
+        <xs:element name="tokenName" type="xs:string" />
+        <xs:element name="tokenPassword" type="xs:string" />
+        <xs:element name="recipientAddress" type="address" />
+        <xs:choice>
+          <xs:element maxOccurs="unbounded" name="transaction" type="transaction" />
+          <xs:element name="groupTransactionIdentifier" type="groupTransactionIdentifier" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="destructionOnPrep" name="destructionMode" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="destructionOnPrep" />
+            <xs:enumeration value="destructionOrgReceipt" />
+            <xs:enumeration value="destructionOnRecipientReceipt" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="groupTransactionIdentifier">
+    <xs:sequence>
+      <xs:element name="retentionPolicy" type="retentionPolicy" />
+    </xs:sequence>
+    <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="xref1" />
+          <xs:enumeration value="xref2" />
+          <xs:enumeration value="xref3" />
+          <xs:enumeration value="state" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="transaction">
+    <xs:choice>
+      <xs:element name="retentionPolicy" type="retentionPolicy" />
+      <xs:element maxOccurs="unbounded" name="document" type="document" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:long" use="required" />
+    <xs:attribute default="true" name="deleteIfEmpty" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="document">
+    <xs:attribute name="id" type="xs:long" use="required" />
+    <xs:attribute name="retain" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="asIs" />
+          <xs:enumeration value="eCopy" />
+          <xs:enumeration value="none" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="retentionPolicy">
+    <xs:attribute name="electronicOriginal" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="eCopy" />
+          <xs:enumeration value="none" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="eStored" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="asIs" />
+          <xs:enumeration value="none" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="eCopy" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="asIs" />
+          <xs:enumeration value="none" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="address">
+    <xs:attribute name="firstName" type="xs:string" use="required" />
+    <xs:attribute name="middleName" type="xs:string" use="optional" />
+    <xs:attribute name="lastName" type="xs:string" use="required" />
+    <xs:attribute name="email" type="xs:string" use="required" />
+    <xs:attribute name="streetAddress1" type="xs:string" use="required" />
+    <xs:attribute name="streetAddress2" type="xs:string" use="optional" />
+    <xs:attribute name="streetAddress3" type="xs:string" use="optional" />
+    <xs:attribute name="city" type="xs:string" use="required" />
+    <xs:attribute name="state" type="xs:string" use="required" />
+    <xs:attribute name="zip" type="xs:string" use="required" />
+    <xs:attribute name="country" type="xs:string" use="required" />
+    <xs:attribute name="phone" type="xs:string" use="required" />
+    <xs:attribute name="alternatePhone" type="xs:string" use="optional" />
+    <xs:attribute name="fax" type="xs:string" use="optional" />
+  </xs:complexType>
+</xs:schema>

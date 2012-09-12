@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FormFieldsTemplate" type="formFieldsTemplate" />
+  <xs:element name="FormFieldsTemplateList" type="formFieldsTemplateList" />
+  <xs:complexType name="simpleFormFieldsTemplate">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Xml" type="xs:base64Binary" />
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="simpleFormFieldsTemplateList">
+    <xs:choice>
+      <xs:element maxOccurs="unbounded" name="FormFieldsTemplate" type="simpleFormFieldsTemplate" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="formFieldsTemplate">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleFormFieldsTemplate">
+                <xs:sequence>
+                  <xs:choice>
+                    <xs:element name="OrgSid" type="xs:long" />
+                    <xs:element name="OrgRef" type="xs:string" />
+                    <xs:element name="OrgName" type="xs:string" />
+                  </xs:choice>
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="FormFieldsTemplateRef" type="xs:string" />
+                <xs:element name="FormFieldsTemplateFilter" type="filter" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="FormFieldsTemplateRef" type="xs:string" />
+                <xs:element name="FormFieldsTemplateFilter" type="filter" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute default="false" name="includeXml" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Edit">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="FormFieldsTemplateRef" type="xs:string" />
+                <xs:element name="FormFieldsTemplateFilter" type="filter" />
+              </xs:choice>
+              <xs:choice>
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+              <xs:element minOccurs="0" name="Name" type="xs:string" />
+              <xs:element minOccurs="0" name="Xml" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="formFieldsTemplateList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="FormFieldsTemplate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="formFieldsTemplateListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="FormFieldsTemplate" type="formFieldsTemplateOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="formFieldsTemplateOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="Xml" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

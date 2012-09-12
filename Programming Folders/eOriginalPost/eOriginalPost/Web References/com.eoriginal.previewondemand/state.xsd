@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="State" type="state" />
+  <xs:element name="StateList" type="stateList" />
+  <xs:simpleType name="stateContainerScope">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Global" />
+      <xs:enumeration value="Document" />
+      <xs:enumeration value="Transaction" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="simpleStateList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="State">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="simple">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                <xs:element minOccurs="0" maxOccurs="1" name="ContainerScope" type="stateContainerScope" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="state">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simple">
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                  <xs:choice>
+                    <xs:element name="OrgSid" type="xs:long" />
+                    <xs:element name="OrgRef" type="xs:string" />
+                    <xs:element name="OrgName" type="xs:string" />
+                    <xs:element name="IndustrySid" type="xs:long" />
+                    <xs:element name="IndustryRef" type="xs:string" />
+                    <xs:element name="IndustryName" type="xs:string" />
+                  </xs:choice>
+                  <xs:element minOccurs="0" maxOccurs="1" name="ContainerScope" type="stateContainerScope" />
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="StateRef" type="xs:string" />
+                  <xs:element name="StateFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                <xs:element minOccurs="0" maxOccurs="1" name="ContainerScope" type="stateContainerScope" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="StateRef" type="xs:string" />
+              <xs:element name="StateFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="StateRef" type="xs:string" />
+              <xs:element name="StateFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stateList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stateListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="State" type="stateOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stateOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element name="Scope" type="xs:int" />
+      <xs:element minOccurs="0" name="OrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element name="ContainerScope" type="stateContainerScope" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

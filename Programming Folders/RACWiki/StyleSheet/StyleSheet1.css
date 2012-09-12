@@ -1,0 +1,636 @@
+﻿body
+{
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	
+}
+.Web_Counter
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:white;
+	margin-left:780px;
+		
+}
+.Warning
+{
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:red;
+	margin-right:50px;
+		
+}
+.IMPT_MSG2
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:red;
+	margin-right:50px;
+	margin-left:50px;
+
+}
+.listview_Body
+{
+	margin-right:50px;
+	margin-left:50px;
+}
+.listview_Body2
+{
+	margin-right:50px;
+	margin-left:75px;
+}
+.listview_Body3
+{
+	margin-left:150px;
+}
+
+
+.Error
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:red;
+	text-decoration: none;
+	font-weight: bold;
+	vertical-align: middle;
+	
+}
+.Welcome_MSG
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	margin-top:15px;
+	margin-right:50px;
+	margin-left:50px;
+}
+.Welcome_MSG2
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	margin-top:10px;
+	margin-right:50px;
+	margin-left:50px;
+}
+.Update_MSG_Align
+{
+	vertical-align:top;
+	margin-top:10px;
+	margin-left:15px;
+}
+.IMPT_MSG
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:red;
+	margin-top:10px;
+}
+.DataMart
+{
+	font-size: 12px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: White;
+	
+}
+.text_search
+{
+	font-size: 12px;
+	font-family: Verdana;
+}
+.dropdown_Marts {
+	text-align: left; 
+	vertical-align: top;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	height: 19px;
+}
+.dropdown_search
+{
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+
+
+/*###### Renctly Update Format - Begin ###### */
+.column1_Update
+{
+	font-size: 8px;
+	color: Gray;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.column2_Update
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+.column2_Update a
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/*###### TAG Cloud Format - Begin ###### */
+.Cloud_align
+{
+	
+	margin-left: 5px;
+	vertical-align:top;
+	margin-top:9px;
+	margin-right: 5px;
+	
+}
+.Cloud_Header
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-left: 5px;
+	vertical-align:top;
+	margin-top:7px;
+	
+}
+.cloud
+{
+		
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	margin-right:10px;
+	margin-left: 15px;
+	vertical-align:top;
+}
+
+.cloud a
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Red;
+}
+.cloud a:link
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.cloud a:visited
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.cloud a:hover
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.cloud a:active
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+/*###### Glossary Format - Begin ###### */
+.Glossary
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.Glossary_Letter
+{
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #CC0033;
+	font-weight: bold;
+	text-decoration: none;
+}
+.Glossary_URL a
+{
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #F7FE2E;
+	font-weight: bold;
+	text-decoration: none;
+}
+.Glossary_Letter a
+{
+	font-size: 9px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.Glossary_Letter a:link
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.Glossary_Letter a:visited
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.Glossary_Letter a:hover
+{
+	text-decoration: underline;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.Glossary_Letter a:active
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.Sub_Glossary
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+	font-style:italic;
+}
+
+/*###### Glossary Format - END ###### */
+
+/* ###################################*/
+/* ######  BEGIN - DO NOT REMOVE #####*/
+/* ###################################*/
+
+/*###### Menu Nav - Begin ###### */
+.menuNav
+{
+	width: 210px;
+	height: 40px;
+	background: url(  'http://racwiki/images/Menu/Menu_01.gif' );
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.tdtag
+{
+	background: url(  'http://racwiki/images/Menu/Menu_03.gif' );
+	background-repeat: repeat-y;
+	background-position: right;
+	width: 191px;
+	height: 44px;
+}
+.tdtag2
+{
+	background: url(  'http://racwiki/images/Menu/Menu_04.gif' );
+	background-repeat: repeat-y;
+	background-position: right;
+	width: 10px;
+	height: 44px;
+}
+.tdtag3
+{
+	background: url(  'http://racwiki/images/Menu/Menu_02.gif' );
+	background-repeat: repeat-y;
+	background-position: right;
+	width: 10px;
+	height: 44px;
+}
+/*###### Menu Nav - End ###### */
+/*###### Results Border ###### */
+
+.Results_01
+{
+	background: url(  'http://racwiki/images/Results/Results_Frame_01.gif' );
+	background-repeat: no-repeat;
+	width: 500px;
+	height: 38px;
+}
+.Results_02
+{
+	background: url(  'http://racwiki/images/Results/Results_Frame_02.gif' );
+	background-repeat: repeat-y;
+	background-position: left;
+	width: 30px;
+}
+.Results_03
+{
+	background: url(  'http://racwiki/images/Results/Results_Frame_04.gif' );
+	background-repeat: repeat-y;
+	background-position: right;
+	width: 25px;
+}
+/* ###################################*/
+/* #######  END - DO NOT REMOVE ######*/
+/* ###################################*/
+
+
+
+.menu
+{
+	font-size: 12px;
+	font-family: Verdana;
+	font-variant: small-caps;
+	text-align: left;
+}
+.siteNav
+{
+	width: 211px;
+	vertical-align: top;
+}
+
+
+
+/* ###### Search Results ###### */
+.header
+{
+	font-family: Calibri, Verdana, Verdana;
+	font-size: 18px;
+	font-size: bold;
+	color: White;
+}
+
+.Search_display
+{
+	width: 400px;
+	font-size: 12px;
+	font-family: Verdana;
+	text-transform: capitalize;
+}
+
+.Summary_display
+{
+	font-size: 10px;
+	font-family: Verdana;
+}
+
+.Summary_URL
+{
+	font-size: 10px;
+	font-family: Verdana;
+	color: Green;
+}
+
+/* ###### Alternating Row Results ###### */
+
+.Search_display2
+{
+	width: 400px;
+	background-color: #DBEEF3;
+	font-size: 12px;
+	font-family: Verdana;
+	text-transform: capitalize;
+}
+
+.Summary_display2
+{
+	font-size: 10px;
+	font-family: Verdana;
+	background-color: #DBEEF3;
+}
+
+.Summary_URL2
+{
+	font-size: 10px;
+	font-family: Verdana;
+	background-color: #DBEEF3;
+	color: Green;
+}
+
+
+/* ###### Data mart ###### */
+.LinkButton1
+{
+	font-size: 11px;
+	font-family: Verdana, Tahoma, Verdana, sans-serif;
+	position: absolute;
+	left:45%;
+}
+
+.LinkButton2
+{
+	font-size: 11px;
+	font-family: Verdana, Tahoma, Verdana, sans-serif;
+	vertical-align: middle;
+}
+
+.DM_gridvew
+{
+	font-size: 10px;
+	font-family: Verdana, Tahoma, Verdana, sans-serif;
+	text-align: left;
+}
+
+.Datamart_Dropdown
+{
+	font-size: 12px;
+	font-family: Verdana, Tahoma, Verdana, sans-serif;
+}
+.FieldHeaderStyle
+{
+	background-color: #DBEEF3;
+	font-size: 12px;
+	font-family: Verdana, Tahoma, Verdana, sans-serif;
+	text-align: left;
+	font-weight: bold;
+	text-transform: capitalize;
+	text-align: right;
+}
+
+/* #####  Data Warehouse Links #### */
+
+.DW_Links
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.DW_Links a
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+.DW_Links a:link
+{
+	font-size: 10px;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.DW_Links a:visited
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Blue;
+}
+.DW_Links a:hover
+{
+	text-decoration: underline;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.DW_Links a:active
+{
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+/*####### - MDM Drropdown  #######*/
+.collapsePanel
+{
+	width: 550px;
+	height: 0px;
+	background-color: white;
+	overflow: hidden;
+}
+
+.collapsePanelHeader
+{
+	width: 550px;
+	height: 20px;
+	color: Yellow;
+	font-weight: bold;
+	cursor: pointer;
+	vertical-align: middle;
+	background-image: url(http://racwiki/images/MDM_Panel_Blue.jpg);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.collapsePanelHeader2
+{
+	width: 550px;
+	height: 20px;
+	color: Yellow;
+	font-weight: bold;
+	cursor: pointer;
+	vertical-align: middle;
+	background-image: url(http://racwiki/images/MDM_Panel_Red.jpg);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.Table_View
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: text-top;
+}
+
+.Table_View li
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;	
+	
+}
+.Header_View
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-decoration: underline;
+	
+}
+
+.twocolumn ul{
+float: left;
+width: 750px;
+}
+
+.twocolumn ul li {
+float: left;
+width: 250px;
+}
+
+
+
+/*####### - Comment settings  #######*/
+.Comments 
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:White;
+	text-decoration: none;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.Comments2 
+{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.Comments3 
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	
+}
+.Thanks
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	text-align:center;
+}
+
+/*####### - Advacned Search -  #######*/
+.fieldset
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: Blue;
+	width: 500px;
+	margin-left: 25px;
+	margin-left: 130px;
+}
+.Search_Opt
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #838B8B;
+	
+}
+	
+.Search
+{
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-left: 130px;
+	
+}
+.Search_btn
+{
+	margin-left: 342px;
+	width: 300px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	
+}
+/********/
+
+.rollover a
+{
+	background-image: url(http://racwiki/images/Web_Design_08.gif);
+}
+.rollover a:hover
+{
+	background-image: url(http://racwiki/images/Web_Design_02_08.gif);
+}
+
+.dropdown_MENU
+{
+	font-family: Arial;
+	font-size: 14px;
+	background-color: #145668;
+	text-align: center;
+	vertical-align: middle;
+	color: White;
+	text-decoration: none;
+	font-weight:bold;
+	Height: 31px ;
+    Width: 141px;
+    padding-top: 15px;
+    
+}

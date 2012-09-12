@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:asb="http://www.eoriginal.com/AddSigBlocksInstructions" xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/AddSigBlocksInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <import schemaLocation="typeSettingValues.xsd" namespace="http://www.eoriginal.com/TypeSettingValues" />
+  <complexType name="AddSigBlocks">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element name="sigBlockList" type="asb:SigBlockList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SigBlockList">
+    <sequence>
+      <element maxOccurs="unbounded" name="sigBlock" type="asb:SigBlock" />
+    </sequence>
+  </complexType>
+  <complexType name="SigBlock">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+      <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+      <element minOccurs="0" maxOccurs="1" name="signerName" type="string" />
+      <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="asb:CustomProperty" />
+    </sequence>
+  </complexType>
+  <complexType name="CustomProperty">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string" use="required" />
+      </extension>
+    </simpleContent>
+  </complexType>
+  <element name="addSigBlocks" type="asb:AddSigBlocks" />
+</schema>

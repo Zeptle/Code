@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ci="http://www.eoriginal.com/ssweb/ConfigureInvitation" xmlns:too="http://www.eoriginal.com/ecore/too" xmlns:tns="http://eoriginal.com/ecorews" xmlns:ad="http://www.eoriginal.com/Tcu" xmlns:cr="http://www.eoriginal.com/ssweb/ConfigureRoles" xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:t="http://www.eoriginal.com/tolecMessage" xmlns:cs="http://www.eoriginal.com/ssweb/ConfigureSortOrder" xmlns:wm="http://www.eoriginal.com/WatermarkInstructions" elementFormDefault="qualified" targetNamespace="http://eoriginal.com/ecorews" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ecore-ws-datatypes.xsd" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/ssweb/get-auth-code.xsd" namespace="http://www.eoriginal.com/ssweb/GetAuthCode" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-invitation.xsd" namespace="http://www.eoriginal.com/ssweb/ConfigureInvitation" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-roles.xsd" namespace="http://www.eoriginal.com/ssweb/ConfigureRoles" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-sort-order.xsd" namespace="http://www.eoriginal.com/ssweb/ConfigureSortOrder" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/admin/vault-info.xsd" namespace="http://www.eoriginal.com/Tcu" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/transform/transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/transform/watermarkInstructions.xsd" namespace="http://www.eoriginal.com/WatermarkInstructions" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/sendAlert.xsd" namespace="http://www.eoriginal.com/ecore/sendAlert" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/print.xsd" namespace="http://www.eoriginal.com/ecore/print" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/destruction.xsd" namespace="http://www.eoriginal.com/ecore/destruction" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/export.xsd" namespace="http://www.eoriginal.com/ecore/export" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/transfer.xsd" namespace="http://www.eoriginal.com/ecore/too" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/tolecMessage.xsd" namespace="http://www.eoriginal.com/tolecMessage" />
+  <xs:element name="defaultResponse" type="tns:defaultResponse" />
+  <xs:element name="defaultRequest" type="tns:defaultRequest" />
+  <xs:element name="loginRequest" type="tns:loginRequest" />
+  <xs:element name="setAliasRequest" type="tns:setAliasRequest" />
+  <xs:element name="setPasswordRequest" type="tns:setPasswordRequest" />
+  <xs:element name="transactions" type="tns:transactions" />
+  <xs:element name="transactionDetails" type="tns:transactionDetails" />
+  <xs:element name="createTransactionRequest" type="tns:createTransactionRequest" />
+  <xs:element name="searchTransactions" type="tns:searchRequest" />
+  <xs:element name="documents" type="tns:documents" />
+  <xs:element name="documentDetails" type="tns:documentDetails" />
+  <xs:element name="createDocumentRequest" type="tns:createDocumentRequest" />
+  <xs:element name="searchDocuments" type="tns:searchDocuments" />
+  <xs:element name="versions" type="tns:versions" />
+  <xs:element name="getCopyRequests" type="tns:getCopyRequests" />
+  <xs:element name="files" type="tns:files" />
+  <xs:element name="storeDocumentRequests" type="tns:storeDocumentRequests" />
+  <xs:element name="events" type="tns:events" />
+  <xs:element name="insertFormFieldsRequests" type="tns:insertFormFieldsRequests" />
+  <xs:element name="getFormFieldsRequest" type="tns:getFormFieldsRequest" />
+  <xs:element name="editFormFieldsRequests" type="tns:documentModificationRequests" />
+  <xs:element name="mergeDataRequests" type="tns:documentModificationRequests" />
+  <xs:element name="removeFormFieldsRequests" type="tns:documentModificationRequests" />
+  <xs:element name="addSignatureRequests" type="tns:documentModificationRequests" />
+  <xs:element name="watermarkDocumentRequests" type="tns:watermarkDocumentRequests" />
+  <xs:element name="signaturePrepRequests" type="tns:signaturePrepRequests" />
+  <xs:element name="signRequests" type="tns:signRequests" />
+  <xs:element name="nonVaultedDocuments" type="tns:nonVaultedDocuments" />
+  <xs:element name="configurePathRequests" type="tns:configurePathRequests" />
+  <xs:element name="configureSortOrderRequests" type="tns:configureSortOrderRequests" />
+  <xs:element name="configureRolesRequests" type="tns:configureRolesRequests" />
+  <xs:element name="configureInvitationRequests" type="tns:configureInvitationRequests" />
+  <xs:element name="searchPathTransactionsRequest" type="tns:searchPathTransactionsRequest" />
+  <xs:element name="pathTransactions" type="tns:pathTransactions" />
+  <xs:element name="authCode" type="xs:string" />
+  <xs:element abstract="true" name="batch" />
+  <xs:element name="certifiedPrint" substitutionGroup="tns:batch" type="tns:batch" />
+  <xs:element name="export" substitutionGroup="tns:batch" type="tns:batch" />
+  <xs:element name="verifyExport" substitutionGroup="tns:batch" type="tns:batchExport" />
+  <xs:element name="destruction" substitutionGroup="tns:batch" type="tns:batch" />
+  <xs:element name="transfer" substitutionGroup="tns:batch" type="tns:batch" />
+  <xs:element name="paperIn" substitutionGroup="tns:batch" type="tns:batch" />
+  <xs:element abstract="true" name="authorizeBatch" />
+  <xs:element name="authorizeExport" substitutionGroup="tns:batch" type="tns:batchExport" />
+  <xs:element name="authorizePaperIn" substitutionGroup="tns:authorizeBatch" type="tns:authorizePaperIn" />
+  <xs:element name="buyerAccept" substitutionGroup="tns:authorizeBatch" type="tns:buyerAccept" />
+  <xs:element name="transferRequest" type="tns:transferRequest" />
+  <xs:element name="paperInRequest" type="tns:paperInRequest" />
+  <xs:element name="tolecRequest" type="tns:tolecRequest" />
+  <xs:element name="tolec" type="tns:tolec" />
+  <xs:element name="getTolecResponseRequest" type="tns:getTolecResponseRequest" />
+  <xs:element name="tolecResponses" type="tns:tolecResponses" />
+  <xs:element name="configureVaultRequest" type="tns:configureVaultRequest" />
+  <xs:element name="throwEventRequest" type="tns:throwEventRequest" />
+  <xs:element name="addCommentRequest" type="tns:addCommentRequest" />
+  <xs:element name="getCommentsRequest" type="tns:getCommentsRequest" />
+  <xs:element name="comments" type="tns:comments" />
+  <xs:element name="transferResults" type="tns:transferResults" />
+  <xs:complexType name="loginRequest">
+    <xs:attribute name="username" type="tns:string500" use="required" />
+    <xs:attribute name="organization" type="tns:string500" use="required" />
+    <xs:attribute name="password" type="tns:string30" use="required" />
+    <xs:attribute name="ipAddress" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="setAliasRequest">
+    <xs:attribute name="firstName" type="tns:string500" use="required" />
+    <xs:attribute name="lastName" type="tns:string500" use="required" />
+    <xs:attribute name="email" type="tns:string256" use="required" />
+    <xs:attribute name="middleName" type="tns:string500" />
+    <xs:attribute name="suffix" type="tns:string10" />
+    <xs:attribute name="streetAddress1" type="tns:string50" />
+    <xs:attribute name="streetAddress2" type="tns:string50" />
+    <xs:attribute name="streetAddress3" type="tns:string50" />
+    <xs:attribute name="city" type="tns:string30" />
+    <xs:attribute name="state" type="tns:string20" />
+    <xs:attribute name="zipcode" type="tns:string20" />
+    <xs:attribute name="country" type="tns:string30" />
+    <xs:attribute name="phone1" type="tns:string30" />
+    <xs:attribute name="phone2" type="tns:string30" />
+    <xs:attribute name="fax" type="tns:string30" />
+    <xs:attribute name="ipAddress" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="setPasswordRequest">
+    <xs:attribute name="username" type="tns:string500" use="required" />
+    <xs:attribute name="organization" type="tns:string500" use="required" />
+    <xs:attribute name="password" type="tns:string30" use="required" />
+    <xs:attribute name="newPassword" type="tns:string30" use="required" />
+    <xs:attribute name="confirmNewPassword" type="tns:string30" use="required" />
+  </xs:complexType>
+  <xs:complexType name="configureVaultRequest">
+    <xs:sequence>
+      <xs:element ref="ad:Tcu" />
+    </xs:sequence>
+    <xs:attribute default="false" name="testing" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="throwEventRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+    </xs:sequence>
+    <xs:attribute name="type" type="tns:string1000" use="required" />
+    <xs:attribute name="id" type="tns:string1000" use="required" />
+    <xs:attribute name="role" type="tns:string30" use="required" />
+    <xs:attribute default="false" name="auditable" type="xs:boolean" />
+    <xs:attribute name="transactionVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="requestVaultId" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="addCommentRequest">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="transactionVaultId" type="xs:positiveInteger" />
+        <xs:element name="documentVaultId" type="xs:positiveInteger" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="comment" type="tns:string500" use="required" />
+  </xs:complexType>
+  <xs:complexType name="getCommentsRequest">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="transactionVaultId" type="xs:positiveInteger" />
+        <xs:element name="documentVaultId" type="xs:positiveInteger" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comments">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="comment" type="tns:comment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comment">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="transactionVaultId" type="xs:positiveInteger" />
+        <xs:element name="documentVaultId" type="xs:positiveInteger" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="userVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="firstName" type="tns:string500" use="required" />
+    <xs:attribute name="lastName" type="tns:string500" use="required" />
+    <xs:attribute name="comment" type="tns:string500" use="required" />
+    <xs:attribute name="date" type="xs:dateTime" use="required" />
+  </xs:complexType>
+  <xs:complexType name="createTransactionRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+    </xs:sequence>
+    <xs:attribute name="id" type="tns:string500" use="required" />
+    <xs:attribute default="1" name="copies" type="xs:int" />
+    <xs:attribute name="businessProcess" type="tns:string500" />
+    <xs:attribute name="description" type="tns:string4000" />
+    <xs:attribute name="externalReference1" type="tns:string100" />
+    <xs:attribute name="externalReference2" type="tns:string100" />
+    <xs:attribute name="externalReference3" type="tns:string100" />
+    <xs:attribute name="retentionPolicy" type="tns:string500" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="taskTemplate" type="tns:string500" />
+    <xs:attribute name="transactionType" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="searchRequest">
+    <xs:attribute name="creationEndDate" type="xs:dateTime" />
+    <xs:attribute name="creationStartDate" type="xs:dateTime" />
+    <xs:attribute name="expirationEndDate" type="xs:dateTime" />
+    <xs:attribute name="expirationStartDate" type="xs:dateTime" />
+    <xs:attribute name="externalReference1" type="tns:string100" />
+    <xs:attribute name="externalReference2" type="tns:string100" />
+    <xs:attribute name="externalReference3" type="tns:string100" />
+    <xs:attribute name="id" type="tns:string500" />
+    <xs:attribute name="status" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="transactions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="transaction" type="tns:transaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+    </xs:sequence>
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="id" type="tns:string500" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" />
+    <xs:attribute name="organization" type="tns:string500" />
+    <xs:attribute name="businessProcess" type="tns:string500" />
+    <xs:attribute name="dateLastUpdated" type="xs:dateTime" />
+    <xs:attribute name="description" type="tns:string4000" />
+    <xs:attribute name="externalReference1" type="tns:string100" />
+    <xs:attribute name="externalReference2" type="tns:string100" />
+    <xs:attribute name="externalReference3" type="tns:string100" />
+    <xs:attribute name="retentionPolicy" type="tns:string500" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="taskTemplate" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="transactionDetails">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="transactionDetail" type="tns:transactionDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:transaction">
+        <xs:sequence>
+          <xs:element name="documents" type="tns:documents" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="createDocumentRequest">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="documentTemplateVaultId" type="xs:positiveInteger" />
+        <xs:element name="documentTemplateName" type="tns:string500" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+    </xs:sequence>
+    <xs:attribute name="transactionVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute default="1" name="copies" type="xs:int" />
+    <xs:attribute name="id" type="tns:string500" />
+    <xs:attribute name="businessProcess" type="tns:string500" />
+    <xs:attribute name="description" type="tns:string4000" />
+    <xs:attribute name="externalReference1" type="tns:string100" />
+    <xs:attribute name="externalReference2" type="tns:string100" />
+    <xs:attribute name="externalReference3" type="tns:string100" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="taskTemplate" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="searchDocuments">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:searchRequest">
+        <xs:attribute name="documentTemplate" type="tns:string500" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="documents">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="document" type="tns:document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="document">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+      <xs:element minOccurs="0" name="revisions" type="tns:revisions" />
+    </xs:sequence>
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="transactionVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="id" type="tns:string500" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" />
+    <xs:attribute name="dateLastUpdated" type="xs:dateTime" />
+    <xs:attribute name="documentTemplate" type="tns:string500" />
+    <xs:attribute name="businessProcess" type="tns:string500" />
+    <xs:attribute name="description" type="tns:string4000" />
+    <xs:attribute name="externalReference1" type="tns:string100" />
+    <xs:attribute name="externalReference2" type="tns:string100" />
+    <xs:attribute name="externalReference3" type="tns:string100" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="taskTemplate" type="tns:string500" />
+    <xs:attribute name="vaultType">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="electronicOriginal" />
+          <xs:enumeration value="eCopy" />
+          <xs:enumeration value="eStored" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="documentDetails">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="documentDetail" type="tns:documentDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:document">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="versions" type="tns:versions" />
+          <xs:element minOccurs="0" name="signatures" type="tns:signatures" />
+          <xs:element minOccurs="0" name="digitalSignatures" type="tns:digitalSignatures" />
+          <xs:element minOccurs="0" name="formFields" type="tns:formFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="revisions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="revision" type="xs:positiveInteger" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="versions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="version" type="tns:version" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="version">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="receipt" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="extraData" type="tns:string4000" />
+    </xs:sequence>
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="revision" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="vaultId" type="xs:positiveInteger" />
+    <xs:attribute name="fileName" type="tns:string500" />
+    <xs:attribute name="mimeType" type="tns:string100" />
+    <xs:attribute name="creatorFirstName" type="tns:string500" />
+    <xs:attribute name="creatorLastName" type="tns:string500" />
+    <xs:attribute name="creatorEmail" type="tns:string256" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" />
+    <xs:attribute name="fileSize" type="xs:positiveInteger" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="dateLastAuthenticated" type="xs:dateTime" />
+    <xs:attribute name="dateLastUpdated" type="xs:dateTime" />
+  </xs:complexType>
+  <xs:complexType name="signatures">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="signature" type="tns:signature" />
+    </xs:sequence>
+    <xs:attribute name="totalSigned" type="xs:nonNegativeInteger" use="required" />
+    <xs:attribute name="totalUnsigned" type="xs:nonNegativeInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="signature">
+    <xs:sequence>
+      <xs:element name="pageLocation" type="tns:pageLocation" />
+      <xs:element minOccurs="0" name="customProperties" type="tns:customProperties" />
+      <xs:element minOccurs="0" name="multimediaSignature" type="tns:file" />
+      <xs:element minOccurs="0" name="signatureString" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="signed" type="xs:boolean" use="required" />
+    <xs:attribute name="page" type="xs:positiveInteger" />
+    <xs:attribute name="reason" type="xs:string" />
+    <xs:attribute name="location" type="xs:string" />
+    <xs:attribute name="contact" type="xs:string" />
+    <xs:attribute name="signerName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="digitalSignatures">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="digitalSignature" type="tns:digitalSignature" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="digitalSignature">
+    <xs:attribute name="certificateSerialNumber" type="xs:string" use="required" />
+    <xs:attribute name="validityStartDate" type="xs:dateTime" use="required" />
+    <xs:attribute name="validityEndDate" type="xs:dateTime" use="required" />
+    <xs:attribute name="subjectCommonName" type="xs:string" use="required" />
+    <xs:attribute name="subjectOrganization" type="xs:string" use="required" />
+    <xs:attribute name="subjectOrganizationalUnit" type="xs:string" use="required" />
+    <xs:attribute name="issuerCommonName" type="xs:string" use="required" />
+    <xs:attribute name="issuerOrganization" type="xs:string" use="required" />
+    <xs:attribute name="issuerOrganizationalUnit" type="xs:string" use="required" />
+    <xs:attribute name="id" type="xs:string" />
+    <xs:attribute name="userVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="dateSigned" type="xs:dateTime" />
+    <xs:attribute name="purpose" type="xs:string" />
+    <xs:attribute name="signatureRevision" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="formFields">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="tns:formField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element abstract="true" name="formField" />
+  <xs:element name="textField" substitutionGroup="tns:formField" type="tns:singleValueFormField" />
+  <xs:element name="checkBox" substitutionGroup="tns:formField" type="tns:singleValueFormField" />
+  <xs:element name="radioButton" substitutionGroup="tns:formField" type="tns:singleValueFormField" />
+  <xs:element name="comboBox" substitutionGroup="tns:formField" type="tns:singleValueFormField" />
+  <xs:element name="listBox" substitutionGroup="tns:formField" type="tns:multipleValueFormField" />
+  <xs:complexType name="multipleValueFormField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:formField">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="values" type="tns:values" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="singleValueFormField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:formField">
+        <xs:attribute name="value" type="tns:string500" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formField">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="pageLocation" type="tns:pageLocation" />
+        <xs:element name="hidden" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="options" type="tns:options" />
+      <xs:element minOccurs="0" name="customProperties" type="tns:customProperties" />
+    </xs:sequence>
+    <xs:attribute name="name" type="tns:string100" use="required" />
+    <xs:attribute name="readonly" type="xs:boolean" use="required" />
+    <xs:attribute name="page" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="values">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="value" type="tns:string500" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customProperties">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="customProperty" type="tns:property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="options">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="option" type="tns:property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="property">
+    <xs:attribute name="name" type="tns:string100" use="required" />
+    <xs:attribute name="value" type="tns:string500" use="required" />
+  </xs:complexType>
+  <xs:complexType name="pageLocation">
+    <xs:attribute name="leftXCoord" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="lowerYCoord" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="height" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="width" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="getCopyRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="getCopyRequest" type="tns:getCopyRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCopyRequest">
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:element name="watermarkName" type="tns:string100" />
+        <xs:element ref="wm:WatermarkInstructions" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="revision" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="files">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="file" type="tns:file" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="file">
+    <xs:sequence>
+      <xs:element name="data" type="xs:base64Binary" />
+    </xs:sequence>
+    <xs:attribute name="fileName" type="tns:string500" use="required" />
+    <xs:attribute name="mimeType" type="tns:string100" use="required" />
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="storeDocumentRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="storeDocumentRequest" type="tns:storeDocumentRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="storeDocumentRequest">
+    <xs:sequence>
+      <xs:element name="data" type="xs:base64Binary" />
+    </xs:sequence>
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="mimeType" type="tns:string100" use="required" />
+    <xs:attribute name="fileName" type="tns:string500" use="required" />
+    <xs:attribute default="false" name="applyStoredFormFieldsTemplate" type="xs:boolean" />
+    <xs:attribute default="false" name="returnReceipt" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="events">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="event" type="tns:event" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="event">
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" use="required" />
+    <xs:attribute name="id" type="tns:string1000" use="required" />
+    <xs:attribute name="auditable" type="xs:boolean" use="required" />
+    <xs:attribute name="status" type="tns:string500" />
+    <xs:attribute name="documentId" type="tns:string500" />
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="transactionId" type="tns:string500" />
+    <xs:attribute name="transactionVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="userFirstName" type="tns:string500" />
+    <xs:attribute name="userLastName" type="tns:string500" />
+    <xs:attribute name="extraData" type="tns:string4000" />
+    <xs:attribute name="ipAddress" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="insertFormFieldsRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="insertFormFieldsRequest" type="tns:insertFormFieldsRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertFormFieldsRequest">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element fixed="true" name="applyStoredFormFieldsTemplate" type="xs:boolean" />
+        <xs:element name="formFieldsTemplate" type="tns:string500" />
+        <xs:element ref="ti:transformationInstructionSet" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="getFormFieldsRequest">
+    <xs:sequence>
+      <xs:element ref="tns:documents" />
+    </xs:sequence>
+    <xs:attribute default="false" name="retrieveSignatureString" type="xs:boolean" />
+    <xs:attribute default="false" name="includeMultiMediaSignature" type="xs:boolean" />
+    <xs:attribute default="false" name="includeSignatureInfo" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="documentModificationRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="documentModificationRequest" type="tns:documentModificationRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentModificationRequest">
+    <xs:sequence>
+      <xs:element ref="ti:transformationInstructionSet" />
+    </xs:sequence>
+    <xs:attribute name="documentVaultId" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="watermarkDocumentRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="watermarkDocumentRequest" type="tns:watermarkDocumentRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="watermarkDocumentRequest">
+    <xs:sequence>
+      <xs:element name="data" type="xs:base64Binary" />
+      <xs:element ref="wm:WatermarkInstructions" />
+    </xs:sequence>
+    <xs:attribute default="watermarkedDocument.pdf" name="outputFileName" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="signaturePrepRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="signaturePrepRequest" type="tns:signaturePrepRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signaturePrepRequest">
+    <xs:sequence>
+      <xs:element name="data" type="xs:base64Binary" />
+      <xs:element ref="ti:transformationInstructionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="signRequest" type="tns:signRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signRequest">
+    <xs:sequence>
+      <xs:element name="data" type="xs:base64Binary" />
+      <xs:element ref="ti:transformationInstructionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nonVaultedDocuments">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nonVaultedDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="file" type="tns:file" />
+            <xs:element minOccurs="0" name="signatures" type="tns:signatures" />
+            <xs:element minOccurs="0" name="formFields" type="tns:formFields" />
+            <xs:element minOccurs="0" name="digitalSignatures" type="tns:digitalSignatures" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configurePathRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="configurePathRequest" type="tns:configurePathRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configurePathRequest">
+    <xs:sequence>
+      <xs:element ref="ci:eoConfigureInvitation" />
+      <xs:element ref="cr:eoConfigureRoles" />
+      <xs:element ref="cs:eoConfigureSortOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configureSortOrderRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="cs:eoConfigureSortOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configureRolesRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="cr:eoConfigureRoles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configureInvitationRequests">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="ci:eoConfigureInvitation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchPathTransactionsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:searchRequest">
+        <xs:attribute name="transactionVaultId" type="xs:positiveInteger" />
+        <xs:attribute name="creatorUsername" type="tns:string500" />
+        <xs:attribute name="offset" type="xs:positiveInteger" />
+        <xs:attribute name="maxDisplay" type="xs:positiveInteger" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pathTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="pathTransaction" type="tns:pathTransaction" />
+    </xs:sequence>
+    <xs:attribute name="totalTransactions" type="xs:nonNegativeInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="pathTransaction">
+    <xs:sequence>
+      <xs:element name="signatureResults" type="tns:signatureResults" />
+    </xs:sequence>
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="id" type="tns:string500" use="required" />
+    <xs:attribute name="creatorFirstName" type="tns:string500" use="required" />
+    <xs:attribute name="creatorLastName" type="tns:string500" use="required" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" use="required" />
+    <xs:attribute name="status" type="tns:string500" />
+  </xs:complexType>
+  <xs:complexType name="signatureResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="signatureResult" type="tns:signatureResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signatureResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="document" type="tns:documentType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attachDocument" type="tns:documentType" />
+      <xs:element minOccurs="0" name="roles" type="tns:roles" />
+    </xs:sequence>
+    <xs:attribute name="status" type="tns:string500" use="required" />
+    <xs:attribute name="dateCreated" type="xs:dateTime" use="required" />
+    <xs:attribute name="expirationDate" type="xs:dateTime" />
+  </xs:complexType>
+  <xs:complexType name="roles">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="role" type="tns:role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="document" type="tns:documentType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attachDocument" type="tns:documentType" />
+      <xs:element minOccurs="0" name="idVerification" type="tns:verificationType" />
+      <xs:element minOccurs="0" name="smsVerification" type="tns:verificationType" />
+    </xs:sequence>
+    <xs:attribute name="firstName" type="tns:string500" use="required" />
+    <xs:attribute name="middleName" type="tns:string500" />
+    <xs:attribute name="lastName" type="tns:string500" use="required" />
+    <xs:attribute name="suffix" type="tns:string500" />
+    <xs:attribute name="email" type="tns:string256" use="required" />
+    <xs:attribute name="status" type="tns:string500" use="required" />
+    <xs:attribute name="required" type="xs:boolean" use="required" />
+    <xs:attribute name="routingOrder" type="xs:nonNegativeInteger" />
+    <xs:attribute name="name" type="tns:string500" use="required" />
+  </xs:complexType>
+  <xs:complexType name="verificationType">
+    <xs:attribute name="attempts" type="xs:nonNegativeInteger" use="required" />
+    <xs:attribute name="lastResult" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="documentType">
+    <xs:attribute name="sid" type="xs:positiveInteger" />
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="required" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="batch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="package" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="transactionDetails" type="tns:transactionDetails" />
+    </xs:sequence>
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="id" type="tns:string100" />
+    <xs:attribute name="dateRequested" type="xs:dateTime" />
+    <xs:attribute name="status">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Submitted" />
+          <xs:enumeration value="Authorized" />
+          <xs:enumeration value="Transfer initiated by seller" />
+          <xs:enumeration value="Transfer accepted by buyer" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="batchExport">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:batch">
+        <xs:sequence>
+          <xs:choice minOccurs="0">
+            <xs:element name="watermarkName" type="tns:string100" />
+            <xs:element ref="wm:WatermarkInstructions" />
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="transferRequest">
+    <xs:sequence>
+      <xs:element ref="too:agentTransfer" />
+      <xs:choice minOccurs="0">
+        <xs:element name="watermarkName" type="tns:string100" />
+        <xs:element ref="wm:WatermarkInstructions" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transferResults">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="transaction">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="document">
+              <xs:complexType>
+                <xs:attribute name="buyerSid" type="xs:positiveInteger" use="required" />
+                <xs:attribute name="sellerSid" type="xs:positiveInteger" use="required" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="sellerSid" type="xs:positiveInteger" use="required" />
+          <xs:attribute name="buyerSid" type="xs:positiveInteger" use="required" />
+          <xs:attribute name="sellerFrotSid" type="xs:positiveInteger" use="required" />
+          <xs:attribute name="buyerFrotSid" type="xs:positiveInteger" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authorizeBatch">
+    <xs:attribute name="vaultId" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="authorizePaperIn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:authorizeBatch">
+        <xs:attribute name="tokenName" type="tns:string20" use="required" />
+        <xs:attribute name="tokenPassword" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="buyerAccept">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:authorizeBatch">
+        <xs:sequence>
+          <xs:element name="manifestDocumentTemplate" type="tns:string500" />
+        </xs:sequence>
+        <xs:attribute name="tokenName" type="tns:string20" use="required" />
+        <xs:attribute name="tokenPassword" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="paperInRequest">
+    <xs:sequence>
+      <xs:element ref="tns:documents" />
+    </xs:sequence>
+    <xs:attribute name="batchName" type="tns:string100" use="required" />
+  </xs:complexType>
+  <xs:complexType name="tolec">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:error" />
+    </xs:sequence>
+    <xs:attribute name="requestVaultId" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="status" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUBMITTED" />
+          <xs:enumeration value="CANCELED" />
+          <xs:enumeration value="FINALIZED" />
+          <xs:enumeration value="IMPORTED" />
+          <xs:enumeration value="FAILED" />
+          <xs:enumeration value="PROCESSED" />
+          <xs:enumeration value="PENDING_IMPORT" />
+          <xs:enumeration value="PARTIALLY_IMPORTED" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="dateRequested" type="xs:dateTime" use="required" />
+    <xs:attribute name="requestorVaultId" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="tolecRequest">
+    <xs:sequence>
+      <xs:element ref="tns:transactions" />
+    </xs:sequence>
+    <xs:attribute name="tokenName" type="tns:string20" use="required" />
+    <xs:attribute name="tokenPassword" type="xs:string" use="required" />
+    <xs:attribute name="destinationUrl" type="xs:string" use="required" />
+    <xs:attribute default="eCopy" name="retentionType">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="eCopy" />
+          <xs:enumeration value="none" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="getTolecResponseRequest">
+    <xs:attribute name="transactionVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="requestVaultId" type="xs:positiveInteger" />
+    <xs:attribute name="requestStartDate" type="xs:dateTime" />
+    <xs:attribute name="requestEndDate" type="xs:dateTime" />
+    <xs:attribute name="status">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUCCESSFUL" />
+          <xs:enumeration value="FAILED" />
+          <xs:enumeration value="FINALIZED" />
+          <xs:enumeration value="PARTIALLY_FINALIZED" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="tolecResponses">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="t:tolecMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defaultRequest" />
+  <xs:complexType name="defaultResponse">
+    <xs:attribute name="transactionStatus" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:nonNegativeInteger">
+          <xs:maxInclusive value="9" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="error" type="tns:error" />
+  <xs:complexType name="error">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="code" type="xs:string" use="required" />
+        <xs:attribute name="id" type="xs:string" use="required" />
+        <xs:attribute name="subCode" type="xs:string" />
+        <xs:attribute name="reason" type="xs:string" />
+        <xs:attribute name="description" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

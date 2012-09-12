@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tm="http://www.eoriginal.com/tolecMessage" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/tolecMessage" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="common.xsd" />
+  <xs:import schemaLocation="http://schemas.eoriginal.com/2005/10/31/xmldsig-core-schema.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
+  <xs:element name="tolecMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="tolecRequest" type="tm:tolecRequest" />
+          <xs:element name="tolecResponse" type="tm:tolecResponse" />
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ds:Signature" />
+      </xs:sequence>
+      <xs:attribute fixed="1.0" name="version" type="xs:decimal" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="tolecRequest">
+    <xs:sequence>
+      <xs:element name="replyMethod">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute" type="tm:attribute" />
+          </xs:sequence>
+          <xs:attribute name="protocol" type="xs:string" use="required" />
+          <xs:attribute name="uri" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="documentSet" type="tm:requestDocumentSet" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute" type="tm:attribute" />
+    </xs:sequence>
+    <xs:attribute name="requestType" type="tm:requestType" use="required" />
+    <xs:attribute name="senderTransferId" type="xs:string" use="required" />
+    <xs:attribute name="receiverTransferId" type="xs:string" />
+    <xs:attribute name="senderOrgName" type="xs:string" use="required" />
+    <xs:attribute name="date" type="xs:dateTime" use="required" />
+    <xs:attribute name="expiration" type="xs:dateTime" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="tolecResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="documentSet" type="tm:responseDocumentSet" />
+      <xs:element minOccurs="0" name="error" type="tm:error" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute" type="tm:attribute" />
+    </xs:sequence>
+    <xs:attribute name="senderTransferId" type="xs:string" use="required" />
+    <xs:attribute name="receiverTransferId" type="xs:string" use="required" />
+    <xs:attribute name="date" type="xs:dateTime" use="required" />
+    <xs:attribute name="status" type="tm:status" use="required" />
+  </xs:complexType>
+  <xs:complexType name="requestDocumentSet">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="document">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required" />
+          <xs:attribute name="location" type="xs:string" use="required" />
+          <xs:attribute name="hash" type="xs:string" use="required" />
+          <xs:attribute name="auditTrailLocation" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="responseDocumentSet">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="document">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="error" type="tm:error" />
+          </xs:sequence>
+          <xs:attribute name="senderId" type="xs:string" use="required" />
+          <xs:attribute name="status" type="tm:status" use="required" />
+          <xs:attribute name="receiverId" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="error" type="tm:error" />
+    </xs:sequence>
+    <xs:attribute name="senderId" type="xs:string" use="required" />
+    <xs:attribute name="status" type="tm:status" use="required" />
+    <xs:attribute name="receiverId" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="requestType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="authorize" />
+      <xs:enumeration value="tolec" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="successful" />
+      <xs:enumeration value="failed" />
+      <xs:enumeration value="finalized" />
+      <xs:enumeration value="partially_finalized" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

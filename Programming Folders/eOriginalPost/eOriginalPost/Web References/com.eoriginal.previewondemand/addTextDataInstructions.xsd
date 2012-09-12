@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:atd="http://www.eoriginal.com/AddTextDataInstructions" xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/AddTextDataInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <complexType name="AddTextData">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element name="textDataList" type="atd:TextDataList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TextDataList">
+    <sequence>
+      <element maxOccurs="unbounded" name="textData" type="atd:TextData" />
+    </sequence>
+  </complexType>
+  <complexType name="TextData">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="fieldName" type="string" />
+      <element minOccurs="1" maxOccurs="unbounded" name="text" type="string" />
+    </sequence>
+  </complexType>
+  <element name="addTextData" type="atd:AddTextData" />
+</schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:complexType name="permission">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="ActionSid" type="xs:long" />
+        <xs:element name="ActionRef" type="xs:string" />
+        <xs:element name="ActionFilter" type="filter" />
+      </xs:choice>
+      <xs:choice minOccurs="0">
+        <xs:element name="TargetOrgSid" type="xs:long" />
+        <xs:element name="TargetOrgRef" type="xs:string" />
+        <xs:element name="TargetOrgName" type="xs:string" />
+        <xs:element name="TargetIndustrySid" type="xs:long" />
+        <xs:element name="TargetIndustryRef" type="xs:string" />
+        <xs:element name="TargetIndustryName" type="xs:string" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acl">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Permission" type="permission" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="aclOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Permission" type="permissionOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="permissionOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Scope" type="xs:long" />
+      <xs:element minOccurs="0" name="TargetOrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="TargetIndustrySid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

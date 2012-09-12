@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="permission.xsd" />
+  <xs:include schemaLocation="address.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="User" type="user" />
+  <xs:element name="UserList" type="userList" />
+  <xs:complexType name="simpleUser">
+    <xs:sequence>
+      <xs:element name="FirstName" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" type="xs:string" />
+      <xs:element name="LastName" type="xs:string" />
+      <xs:element minOccurs="0" name="Suffix" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" type="xs:string" />
+      <xs:element name="LoginName" type="xs:string" />
+      <xs:element name="Password" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" type="address" />
+      <xs:element minOccurs="0" default="true" name="TokenRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" default="true" name="NeedsPasswordChange" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element minOccurs="0" name="Acl" type="acl" />
+      <xs:element minOccurs="0" name="CertList" type="certList" />
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="simpleUserList">
+    <xs:choice>
+      <xs:element maxOccurs="unbounded" name="User" type="simpleUser" />
+      <xs:element maxOccurs="unbounded" name="UserSid" type="xs:long" />
+      <xs:element maxOccurs="unbounded" name="UserRef" type="xs:string" />
+      <xs:element maxOccurs="unbounded" name="UserFilter" type="filter" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleUser">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="UserRef" type="xs:string" />
+                  <xs:element name="UserFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="FirstName" type="xs:string" />
+                <xs:element minOccurs="0" name="MiddleName" type="xs:string" />
+                <xs:element minOccurs="0" name="LastName" type="xs:string" />
+                <xs:element minOccurs="0" name="Suffix" type="xs:string" />
+                <xs:element minOccurs="0" name="Email" type="xs:string" />
+                <xs:element minOccurs="0" name="Address" type="address" />
+                <xs:element minOccurs="0" name="Password" type="xs:string" />
+                <xs:element minOccurs="0" name="TokenRequired" type="xs:boolean" />
+                <xs:element minOccurs="0" default="false" name="NeedsPasswordChange" type="xs:boolean" />
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Activate">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="UserRef" type="xs:string" />
+                <xs:element name="UserFilter" type="filter" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Deactivate">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="UserRef" type="xs:string" />
+                <xs:element name="UserFilter" type="filter" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="UserRef" type="xs:string" />
+                  <xs:element name="UserFilter" type="filter" />
+                </xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="Acl" type="acl" />
+                  <xs:element name="CertList" type="certList" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="UserRef" type="xs:string" />
+                  <xs:element name="UserFilter" type="filter" />
+                </xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="Acl" type="acl" />
+                  <xs:element name="CertList" type="certList" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Get">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="UserRef" type="xs:string" />
+                <xs:element name="UserFilter" type="filter" />
+              </xs:choice>
+              <xs:attribute default="false" name="includeAcl" type="xs:boolean" use="optional" />
+              <xs:attribute default="false" name="includeCertList" type="xs:boolean" use="optional" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Cert" type="cert" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cert">
+    <xs:sequence>
+      <xs:element name="MD5" type="xs:string" />
+      <xs:element minOccurs="0" name="Issuer" type="xs:string" />
+      <xs:element name="Expiration" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="User" type="userOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="FirstName" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" type="xs:string" />
+      <xs:element name="LastName" type="xs:string" />
+      <xs:element minOccurs="0" name="Suffix" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" type="xs:string" />
+      <xs:element name="LoginName" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" type="address" />
+      <xs:element name="TokenRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element name="Active" type="xs:string" />
+      <xs:element name="BadLoginAttempts" type="xs:int" />
+      <xs:element name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastSuccessfulLoginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateUserDeactivated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastFailedDisabledDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastFailedReenabledDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastFailedLoginDate" type="xs:dateTime" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Acl" type="aclOut" />
+      <xs:element minOccurs="0" name="CertList" type="certList" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

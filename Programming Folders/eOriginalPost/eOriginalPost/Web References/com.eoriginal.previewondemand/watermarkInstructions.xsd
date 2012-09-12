@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" xmlns:wm="http://www.eoriginal.com/WatermarkInstructions" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/WatermarkInstructions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <xsd:import schemaLocation="typeSettingValues.xsd" namespace="http://www.eoriginal.com/TypeSettingValues" />
+  <xsd:element name="WatermarkInstructions" type="wm:WatermarkInstructions" />
+  <xsd:complexType name="WatermarkInstructions">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ti:TransformationInstructions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" default="Top" name="layer" type="wm:LayerOption" />
+          <xsd:element name="securityProperties" type="wm:WatermarkProperties" />
+          <xsd:element minOccurs="0" name="obscureSignatureBlockProperties" type="wm:ObscureSignatureBlockProperties" />
+          <xsd:element minOccurs="0" name="obscureTextBlockProperties" type="wm:ObscureTextBlockProperties" />
+          <xsd:element minOccurs="0" name="topMargin" type="wm:EdgeWatermarkDefinition" />
+          <xsd:element minOccurs="0" name="bottomMargin" type="wm:EdgeWatermarkDefinition" />
+          <xsd:element minOccurs="0" name="leftMargin" type="wm:EdgeWatermarkDefinition" />
+          <xsd:element minOccurs="0" name="rightMargin" type="wm:EdgeWatermarkDefinition" />
+          <xsd:element minOccurs="0" name="body" type="wm:MainWatermarkDefinition" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="PasswordString">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="32" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LayerOption">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Top" />
+      <xsd:enumeration value="Bottom" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PropertyName">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="enableModification" />
+      <xsd:enumeration value="enablePrinting" />
+      <xsd:enumeration value="enableCopying" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OffsetSize">
+    <xsd:restriction base="xsd:double">
+      <xsd:minInclusive value="0" />
+      <xsd:maxInclusive value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="TypeSetEdge">
+    <xsd:sequence>
+      <xsd:element ref="tsv:FontType" />
+      <xsd:element minOccurs="0" default="Normal" name="fontStyle" type="tsv:FontStyle" />
+      <xsd:element name="fontSize" type="tsv:FontSize" />
+      <xsd:element minOccurs="0" default="Black" name="color" type="tsv:Color" />
+      <xsd:element name="offset" type="wm:OffsetSize" />
+      <xsd:element minOccurs="0" default="Center" name="justification" type="tsv:Alignment" />
+      <xsd:element minOccurs="0" default="0" name="rotation" type="tsv:Rotation" />
+      <xsd:element minOccurs="0" default="100" name="opacity" type="tsv:Opacity" />
+    </xsd:sequence>
+    <xsd:attribute default="0.1" name="lineWidth" type="tsv:LineWidth" />
+  </xsd:complexType>
+  <xsd:complexType name="TypeSetMain">
+    <xsd:sequence>
+      <xsd:element ref="tsv:FontType" />
+      <xsd:element minOccurs="0" default="Normal" name="fontStyle" type="tsv:FontStyle" />
+      <xsd:element name="fontSize" type="tsv:FontSize" />
+      <xsd:element minOccurs="0" default="Black" name="color" type="tsv:Color" />
+      <xsd:element minOccurs="0" default="0" name="rotation" type="tsv:Rotation" />
+      <xsd:element minOccurs="0" default="100" name="opacity" type="tsv:Opacity" />
+    </xsd:sequence>
+    <xsd:attribute default="0.1" name="lineWidth" type="tsv:LineWidth" />
+  </xsd:complexType>
+  <xsd:complexType name="TypeSetObscure">
+    <xsd:sequence>
+      <xsd:element ref="tsv:FontType" />
+      <xsd:element minOccurs="0" default="Normal" name="fontStyle" type="tsv:FontStyle" />
+      <xsd:element name="fontSize" type="tsv:FontSize" />
+      <xsd:element minOccurs="0" default="Black" name="color" type="tsv:Color" />
+      <xsd:element minOccurs="0" default="Center" name="justification" type="tsv:Alignment" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObscureSignatureBlockProperties">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="typeSet" type="wm:TypeSetObscure" />
+      <xsd:element minOccurs="0" default="Black" name="color" type="tsv:Color" />
+      <xsd:element minOccurs="0" name="text" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObscureTextBlockProperties">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="typeSet" type="wm:TypeSetObscure" />
+      <xsd:element minOccurs="0" default="Black" name="color" type="tsv:Color" />
+      <xsd:element minOccurs="0" name="text" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EdgeWatermarkDefinition">
+    <xsd:sequence>
+      <xsd:element name="typeSet" type="wm:TypeSetEdge" />
+      <xsd:element name="watermarkTextLine1" type="xsd:string" />
+      <xsd:element minOccurs="0" name="watermarkTextLine2" type="xsd:string" />
+      <xsd:element minOccurs="0" name="watermarkTextLine3" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MainWatermarkDefinition">
+    <xsd:sequence>
+      <xsd:element name="typeSet" type="wm:TypeSetMain" />
+      <xsd:element name="watermarkTextLine1" type="xsd:string" />
+      <xsd:element minOccurs="0" name="watermarkTextLine2" type="xsd:string" />
+      <xsd:element minOccurs="0" name="watermarkTextLine3" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Property">
+    <xsd:attribute name="name" type="wm:PropertyName" use="required" />
+    <xsd:attribute name="value" type="xsd:boolean" use="required" />
+  </xsd:complexType>
+  <xsd:complexType name="WatermarkProperties">
+    <xsd:sequence>
+      <xsd:element minOccurs="3" maxOccurs="3" name="property" type="wm:Property" />
+    </xsd:sequence>
+    <xsd:attribute name="pdfPassword" type="wm:PasswordString" />
+  </xsd:complexType>
+</xsd:schema>

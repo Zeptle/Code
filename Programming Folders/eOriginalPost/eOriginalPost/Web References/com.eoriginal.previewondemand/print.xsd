@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ecore/print" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ecore/print" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoCertifiedPrintInstructions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="batchName" type="xs:string" />
+        <xs:element name="recipientAddress" type="address" />
+        <xs:choice>
+          <xs:element name="groupDocumentIdentifier" type="groupDocumentIdentifier" />
+          <xs:element name="documentList" type="documentList" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="groupDocumentIdentifier">
+    <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="xref1" />
+          <xs:enumeration value="xref2" />
+          <xs:enumeration value="xref3" />
+          <xs:enumeration value="state" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="documentList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="document">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:long" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="address">
+    <xs:attribute name="firstName" type="xs:string" use="required" />
+    <xs:attribute name="middleName" type="xs:string" use="optional" />
+    <xs:attribute name="lastName" type="xs:string" use="required" />
+    <xs:attribute name="email" type="xs:string" use="required" />
+    <xs:attribute name="streetAddress1" type="xs:string" use="required" />
+    <xs:attribute name="streetAddress2" type="xs:string" use="optional" />
+    <xs:attribute name="streetAddress3" type="xs:string" use="optional" />
+    <xs:attribute name="city" type="xs:string" use="required" />
+    <xs:attribute name="state" type="xs:string" use="required" />
+    <xs:attribute name="zip" type="xs:string" use="required" />
+    <xs:attribute name="country" type="xs:string" use="required" />
+    <xs:attribute name="phone" type="xs:string" use="required" />
+    <xs:attribute name="alternatePhone" type="xs:string" use="optional" />
+    <xs:attribute name="fax" type="xs:string" use="optional" />
+  </xs:complexType>
+</xs:schema>

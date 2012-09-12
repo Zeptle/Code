@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ecore/too" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ecore/too" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoTransferInstructions">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="sellerInitiate" />
+        <xs:element ref="agentTransfer" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agentTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="sellerInformation" type="agentSellerInformation" />
+        <xs:element name="buyerInformation" type="agentBuyerInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="agentSellerInformation">
+    <xs:sequence>
+      <xs:element name="batchName" type="xs:string" />
+      <xs:element name="userName" type="xs:string" />
+      <xs:element name="userOrganizationName" type="xs:string" />
+      <xs:element name="userPassword" type="xs:string" />
+      <xs:element name="tokenName" type="xs:string" />
+      <xs:element name="tokenPassword" type="xs:string" />
+      <xs:element name="receiptDocumentType" type="xs:string" />
+      <xs:element ref="sellerInventoryList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="agentBuyerInformation">
+    <xs:sequence>
+      <xs:element name="userName" type="xs:string" />
+      <xs:element name="userOrganizationName" type="xs:string" />
+      <xs:element name="userPassword" type="xs:string" />
+      <xs:element name="tokenName" type="xs:string" />
+      <xs:element name="tokenPassword" type="xs:string" />
+      <xs:element name="receiptDocumentType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="sellerInitiate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="sellerInformation" />
+        <xs:element name="buyerInformation" type="sellerBuyerInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sellerInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="batchName" type="xs:string" />
+        <xs:element name="tokenName" type="xs:string" />
+        <xs:element name="tokenPassword" type="xs:string" />
+        <xs:element name="receiptDocumentType" type="xs:string" />
+        <xs:element ref="sellerInventoryList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sellerInventoryList">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="groupTransactionIdentifier" />
+        <xs:element maxOccurs="unbounded" ref="transaction" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="groupTransactionIdentifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="retentionPolicy" />
+        <xs:element ref="buyerTransaction" />
+      </xs:sequence>
+      <xs:attribute name="name" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="xref1" />
+            <xs:enumeration value="xref2" />
+            <xs:enumeration value="xref3" />
+            <xs:enumeration value="state" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="value" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="transaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="retentionPolicy" />
+          <xs:element maxOccurs="unbounded" ref="document" />
+        </xs:choice>
+        <xs:element minOccurs="0" ref="buyerTransaction" />
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:long" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retentionPolicy">
+    <xs:complexType>
+      <xs:attribute name="electronicOriginal" type="retentionAtt" use="required" />
+      <xs:attribute name="eStored" type="retentionAtt" use="required" />
+      <xs:attribute name="eCopy" type="retentionAtt" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:long" use="required" />
+      <xs:attribute name="retain" type="retentionAtt" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="retentionAtt">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="asIs" />
+      <xs:enumeration value="eCopy" />
+      <xs:enumeration value="none" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="sellerBuyerInformation">
+    <xs:sequence>
+      <xs:element name="userName" type="xs:string" />
+      <xs:element name="userOrganizationName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="buyerTransaction">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="status" type="xs:string" />
+      <xs:attribute name="retentionPolicyName" type="xs:string" />
+      <xs:attribute name="taskTemplateName" type="xs:string" />
+      <xs:attribute name="businessProcessName" type="xs:string" />
+      <xs:attribute name="xref1" type="xs:string" />
+      <xs:attribute name="xref2" type="xs:string" />
+      <xs:attribute name="xref3" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

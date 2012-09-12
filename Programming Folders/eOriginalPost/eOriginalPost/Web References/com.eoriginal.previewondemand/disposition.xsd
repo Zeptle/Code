@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Disposition" type="disposition" />
+  <xs:element name="DispList" type="dispList" />
+  <xs:complexType name="simpleDisp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" default="false" name="Default" type="xs:boolean" />
+          <xs:element minOccurs="0" default="Document" name="Type" type="dispType" />
+          <xs:element minOccurs="0" name="DispRuleList">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="DispRule" type="dispRule" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="simpleDispList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Disposition" type="simpleDisp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="disposition">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleDisp">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="DispRef" type="xs:string" />
+                  <xs:element name="DispFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:choice minOccurs="0">
+                  <xs:element name="StateSid" type="xs:long" />
+                  <xs:element name="StateRef" type="xs:string" />
+                  <xs:element name="StateFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Days" type="xs:int" />
+                <xs:element minOccurs="0" name="Months" type="xs:int" />
+                <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="DispRef" type="xs:string" />
+                  <xs:element name="DispFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="DispRuleList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="DispRule" type="dispRule" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="DispRef" type="xs:string" />
+                  <xs:element name="DispFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="DispRuleList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="DispRule" type="dispRule" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="DispRef" type="xs:string" />
+              <xs:element name="DispFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="DispRef" type="xs:string" />
+              <xs:element name="DispFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Disposition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="dispType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Document" />
+      <xs:enumeration value="Transaction" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="dispRule">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="StateSid" type="xs:long" />
+        <xs:element name="StateRef" type="xs:string" />
+        <xs:element name="StateFilter" type="filter" />
+      </xs:choice>
+      <xs:element name="Days" type="xs:int" />
+      <xs:element name="Months" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispRuleListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="DispRule" type="dispRuleOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispRuleOut">
+    <xs:sequence>
+      <xs:element name="StateSid" type="xs:long" />
+      <xs:element name="Days" type="xs:int" />
+      <xs:element name="Months" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Disp" type="dispOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element name="Default" type="xs:boolean" />
+      <xs:element name="Type" type="dispType" />
+      <xs:element minOccurs="0" name="DispRuleList" type="dispRuleListOut" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

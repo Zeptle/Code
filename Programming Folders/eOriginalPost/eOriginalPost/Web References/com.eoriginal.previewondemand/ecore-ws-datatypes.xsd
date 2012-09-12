@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://eoriginal.com/ecorews" elementFormDefault="qualified" targetNamespace="http://eoriginal.com/ecorews" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="nonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string10">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string20">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string30">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string50">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string100">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string256">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="256" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string500">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string1000">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string1500">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="1500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string4000">
+    <xs:restriction base="tns:nonEmptyString">
+      <xs:maxLength value="4000" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

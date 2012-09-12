@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Token" type="token" />
+  <xs:element name="TokenList" type="tokenList" />
+  <xs:complexType name="simpleToken">
+    <xs:sequence>
+      <xs:element name="TokenID" type="xs:string" />
+      <xs:choice>
+        <xs:element name="FileName" type="xs:string" />
+        <xs:element name="CertificateData" type="xs:string" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simpleTokenList">
+    <xs:choice>
+      <xs:element maxOccurs="unbounded" name="Token" type="simpleToken" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="token">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleToken">
+                <xs:sequence>
+                  <xs:choice minOccurs="0">
+                    <xs:element name="OrgSid" type="xs:long" />
+                    <xs:element name="OrgRef" type="xs:string" />
+                    <xs:element name="OrgName" type="xs:string" />
+                  </xs:choice>
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TokenID" type="xs:string" />
+              <xs:choice minOccurs="0">
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TokenID" type="xs:string" />
+              <xs:choice minOccurs="0">
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Edit">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TokenID" type="xs:string" />
+              <xs:choice minOccurs="0">
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+              <xs:choice>
+                <xs:element name="FileName" type="xs:string" />
+                <xs:element name="CertificateData" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Token" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Token" type="tokenOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenOut">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:string" />
+      <xs:element name="P12" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="OrgSid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

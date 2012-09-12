@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:ei="http://www.eoriginal.com/EncryptionInstructions" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/EncryptionInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <complexType name="EncryptionInstructions">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element default="0" name="encryptDocument" type="boolean" />
+          <element default="AES" name="algorithm" type="ei:Algorithm" />
+          <element default="256" name="keysize" type="ei:KeyStrengthSize" />
+          <element name="keystore" type="string" />
+          <element name="provider" type="string" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="Algorithm">
+    <restriction base="string">
+      <enumeration value="AES" />
+      <enumeration value="DES" />
+      <enumeration value="RC2" />
+    </restriction>
+  </simpleType>
+  <simpleType name="KeyStrengthSize">
+    <restriction base="integer">
+      <enumeration value="128" />
+      <enumeration value="192" />
+      <enumeration value="256" />
+    </restriction>
+  </simpleType>
+</schema>

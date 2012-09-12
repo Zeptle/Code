@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="externalOrgConfig.xsd" />
+  <xs:element name="ExternalVault" type="externalVault" />
+  <xs:element name="ExternalVaultList" type="externalVaultList" />
+  <xs:complexType name="externalVaultList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ExternalVault" type="externalVault" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="externalVault">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="PublicKey" type="xs:string" />
+                <xs:element name="PublicKeyData" type="xs:string" />
+              </xs:choice>
+              <xs:element minOccurs="0" name="VaultName" type="xs:string" />
+              <xs:element minOccurs="0" default="true" name="IsAllowed" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExternalOrgConfigList" type="simpleExternalOrgConfigList" />
+            </xs:sequence>
+            <xs:attribute name="key" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element minOccurs="0" name="ExternalVaultSid" type="xs:long" />
+              <xs:element minOccurs="0" name="ExternalVaultRef" type="xs:string" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

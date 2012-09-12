@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/EmptyInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <complexType name="EmptyInstructions">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element fixed="These instructions are intentionally left blank." name="emptyInstruction" type="string" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

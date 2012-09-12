@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:element name="IndStdDoc" type="indStdDoc" />
+  <xs:element name="IndStdDocList" type="indStdDocList" />
+  <xs:complexType name="simpleIndStdDoc">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="simpleIndStdDocList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="IndStdDoc" type="simpleIndStdDoc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indStdDoc">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleIndStdDoc">
+                <xs:choice>
+                  <xs:element name="IndustrySid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="IndStdDocRef" type="xs:string" />
+                  <xs:element name="IndStdDocFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                <xs:element name="Active" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="IndStdDocRef" type="xs:string" />
+              <xs:element name="IndStdDocFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="IndStdDocRef" type="xs:string" />
+              <xs:element name="IndStdDocFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indStdDocList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="IndStdDoc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indStdDocListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="IndStdDoc" type="indStdDocOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indStdDocOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element name="Active" type="xs:boolean" />
+      <xs:element name="CreatorSid" type="xs:long" />
+      <xs:element name="DateCreated" type="xs:dateTime" />
+      <xs:element name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

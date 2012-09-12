@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="filter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="property" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="ref" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="property">
+    <xs:attribute name="key" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="name" />
+          <xs:enumeration value="orgname" />
+          <xs:enumeration value="indname" />
+          <xs:enumeration value="type" />
+          <xs:enumeration value="parentgroupname" />
+          <xs:enumeration value="system" />
+          <xs:enumeration value="scope" />
+          <xs:enumeration value="loginname" />
+          <xs:enumeration value="default" />
+          <xs:enumeration value="all" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required" />
+  </xs:complexType>
+</xs:schema>

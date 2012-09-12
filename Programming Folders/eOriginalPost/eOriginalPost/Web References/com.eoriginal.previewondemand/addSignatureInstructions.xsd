@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:as="http://www.eoriginal.com/AddSignatureInstructions" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/AddSignatureInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <import schemaLocation="typeSettingValues.xsd" namespace="http://www.eoriginal.com/TypeSettingValues" />
+  <complexType name="AddSignature">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element name="tokenName" type="string" />
+          <element name="tokenPassword" type="string" />
+          <element name="signatureList" type="as:SignatureList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SignatureList">
+    <sequence>
+      <element maxOccurs="unbounded" name="signature" type="as:Signature" />
+    </sequence>
+  </complexType>
+  <element abstract="true" name="SignatureAppearanceGroup" />
+  <element abstract="true" name="SignaturePlacementGroup" />
+  <complexType name="Signature">
+    <sequence>
+      <element ref="as:SignatureAppearanceGroup" />
+      <element ref="as:SignaturePlacementGroup" />
+      <element minOccurs="0" name="borderTopText" type="string" />
+      <element minOccurs="0" name="borderBottomText" type="string" />
+      <element minOccurs="0" name="reason" type="string" />
+      <element minOccurs="0" name="location" type="string" />
+      <element minOccurs="0" name="contact" type="string" />
+      <element minOccurs="0" name="multimediaSignature" type="as:MultimediaSignature" />
+    </sequence>
+  </complexType>
+  <complexType name="MultimediaSignature">
+    <sequence>
+      <element name="signatureData" type="string" />
+      <element name="mimeType" type="string" />
+      <element minOccurs="0" name="fileName" type="string" />
+    </sequence>
+  </complexType>
+  <element name="textAppearance" substitutionGroup="as:SignatureAppearanceGroup">
+    <complexType>
+      <sequence>
+        <element name="text" type="string" />
+        <element ref="tsv:FontType" />
+        <element name="fontStyle" type="tsv:FontStyle" />
+        <element minOccurs="0" name="fontSize" type="tsv:FontSize" />
+        <element name="color" type="tsv:Color" />
+        <element minOccurs="0" name="horizontalAlignment" type="tsv:Alignment" />
+        <element minOccurs="0" name="verticalAlignment" type="tsv:VerticalAlignment" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="invisibleAppearance" substitutionGroup="as:SignatureAppearanceGroup">
+    <simpleType>
+      <restriction base="string" />
+    </simpleType>
+  </element>
+  <element name="sigStringAppearance" substitutionGroup="as:SignatureAppearanceGroup">
+    <complexType>
+      <simpleContent>
+        <extension base="as:nonEmptyString">
+          <attribute default="Black" name="foregroundColor" type="tsv:Color" use="optional" />
+        </extension>
+      </simpleContent>
+    </complexType>
+  </element>
+  <element name="imageAppearance" substitutionGroup="as:SignatureAppearanceGroup">
+    <simpleType>
+      <restriction base="string" />
+    </simpleType>
+  </element>
+  <element name="sigBlockPlacement" substitutionGroup="as:SignaturePlacementGroup">
+    <simpleType>
+      <restriction base="string" />
+    </simpleType>
+  </element>
+  <element name="invisiblePlacement" substitutionGroup="as:SignaturePlacementGroup">
+    <simpleType>
+      <restriction base="string" />
+    </simpleType>
+  </element>
+  <element name="signaturePlacement" substitutionGroup="as:SignaturePlacementGroup">
+    <complexType>
+      <sequence>
+        <element name="lowerLeftX" type="integer" />
+        <element name="lowerLeftY" type="integer" />
+        <element name="upperRightX" type="integer" />
+        <element name="upperRightY" type="integer" />
+        <element name="page" type="integer" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="addSignature" type="as:AddSignature" />
+  <simpleType name="nonEmptyString">
+    <restriction base="string">
+      <minLength value="1" />
+    </restriction>
+  </simpleType>
+</schema>

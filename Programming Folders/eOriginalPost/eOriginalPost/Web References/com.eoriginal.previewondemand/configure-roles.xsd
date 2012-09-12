@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ssweb/ConfigureRoles" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ssweb/ConfigureRoles" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoConfigureRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="rolesList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="role">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="firstName">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="lastName">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="eMail">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:choice>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" name="securityCode" type="securityCodeType" />
+                      </xs:sequence>
+                      <xs:sequence>
+                        <xs:element name="securityCodeSentBySMS">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:pattern value="[0-9]{10}" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="securityCode" type="securityCodeType" />
+                      </xs:sequence>
+                    </xs:choice>
+                    <xs:element minOccurs="0" name="notes">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2000" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="signatureMode">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="MANUAL" />
+                          <xs:enumeration value="ACKNOWLEDGED" />
+                          <xs:enumeration value="EXPRESS" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="signatureCaptureMethod">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="signatureCaptureMethodType">
+                            <xs:attribute name="lock" type="xs:boolean" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:choice minOccurs="0">
+                      <xs:element name="ofac" />
+                      <xs:element name="exam" />
+                    </xs:choice>
+                    <xs:element minOccurs="0" name="attachInstructions">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2500" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="wetInkInstructions">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2500" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="dataCollectionInstructions">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2500" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="smsVerification">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="[0-9]{10}" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" ref="verificationParameters" />
+                  </xs:sequence>
+                  <xs:attribute name="name" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:minLength value="1" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="order" type="xs:nonNegativeInteger" use="required" />
+                  <xs:attribute default="true" name="required" type="xs:boolean" use="optional" />
+                  <xs:attribute default="false" name="collectBiometricVoiceVerification" type="xs:boolean" use="optional" />
+                  <xs:attribute default="0" name="reminderDays" type="xs:nonNegativeInteger" use="optional" />
+                  <xs:attribute default="false" name="smsVerification" type="xs:boolean" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="transactionSid" type="xs:nonNegativeInteger" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="securityCodeType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="signatureCaptureMethodType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TYPE" />
+      <xs:enumeration value="DRAW" />
+      <xs:enumeration value="UPLOAD" />
+      <xs:enumeration value="" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element abstract="true" name="verificationParameters" type="VerificationParametersType" />
+  <xs:element name="evsVerificationParameters" substitutionGroup="verificationParameters" type="EVSParametersType" />
+  <xs:complexType name="VerificationParametersType" />
+  <xs:complexType name="EVSParametersType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="VerificationParametersType">
+        <xs:sequence>
+          <xs:element name="firstName" type="xs:token" />
+          <xs:element name="lastName" type="xs:token" />
+          <xs:element name="address1" type="xs:token" />
+          <xs:element minOccurs="0" name="address2" type="xs:token" />
+          <xs:element name="city" type="xs:token" />
+          <xs:element name="state">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:pattern value="[A-Z]{2}" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="zip">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:pattern value="[0-9]{5}|[0-9]{9}" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="socialSecurityNumber">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:pattern value="[0-9]{9}" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

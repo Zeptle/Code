@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/TransformationInstructionsSet" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="watermarkInstructions.xsd" namespace="http://www.eoriginal.com/WatermarkInstructions" />
+  <import schemaLocation="encryptionInstructions.xsd" namespace="http://www.eoriginal.com/EncryptionInstructions" />
+  <import schemaLocation="decryptionInstructions.xsd" namespace="http://www.eoriginal.com/DecryptionInstructions" />
+  <import schemaLocation="addSignatureInstructions.xsd" namespace="http://www.eoriginal.com/AddSignatureInstructions" />
+  <import schemaLocation="appendPropertyValueInstructions.xsd" namespace="http://www.eoriginal.com/AppendPropertyValueInstructions" />
+  <import schemaLocation="wrapInXmlInstructions.xsd" namespace="http://www.eoriginal.com/WrapInXmlInstructions" />
+  <import schemaLocation="mimeTypeConversionInstructions.xsd" namespace="http://www.eoriginal.com/MimeTypeConversionInstructions" />
+  <import schemaLocation="emptyInstructions.xsd" namespace="http://www.eoriginal.com/EmptyInstructions" />
+  <import schemaLocation="fopInstructions.xsd" namespace="http://www.eoriginal.com/FopInstructions" />
+  <import schemaLocation="typeSettingValues.xsd" namespace="http://www.eoriginal.com/TypeSettingValues" />
+  <import schemaLocation="addSigBlockInstructions.xsd" namespace="http://www.eoriginal.com/AddSigBlocksInstructions" />
+  <import schemaLocation="editFormFieldInstructions.xsd" namespace="http://www.eoriginal.com/EditFormFieldInstructions" />
+  <import schemaLocation="addTextFieldInstructions.xsd" namespace="http://www.eoriginal.com/AddTextFieldInstructions" />
+  <import schemaLocation="addTextDataInstructions.xsd" namespace="http://www.eoriginal.com/AddTextDataInstructions" />
+  <element name="transformationInstructionSet">
+    <complexType>
+      <sequence>
+        <element maxOccurs="unbounded" name="transformationInstructions" type="ti:TransformationInstructions" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="TransformationInstructions" abstract="true">
+    <attribute name="name" type="ID" use="required" />
+  </complexType>
+</schema>

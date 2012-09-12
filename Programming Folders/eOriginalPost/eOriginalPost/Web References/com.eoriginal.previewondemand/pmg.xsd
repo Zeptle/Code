@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Pmg" type="pmg" />
+  <xs:element name="PmgList" type="pmgList" />
+  <xs:complexType name="pm">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="AgentSid" type="xs:long" />
+        <xs:element name="AgentRef" type="xs:string" />
+        <xs:element name="AgentFilter" type="filter" />
+      </xs:choice>
+      <xs:choice>
+        <xs:element name="RoleSid" type="xs:long" />
+        <xs:element name="RoleRef" type="xs:string" />
+        <xs:element name="RoleFilter" type="filter" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simplePmg">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" default="true" name="Publish" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PmList">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Pm" type="pm" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="simplePmgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Pmg" type="simplePmg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pmg">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simplePmg">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                  <xs:element name="IndustrySid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element name="Publish" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="PmList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="Pm" type="pm" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="PmList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="Pm" type="pm" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:choice minOccurs="0">
+            <xs:element name="SetDefaultSecurity">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:choice>
+                    <xs:element name="Sid" type="xs:long" />
+                    <xs:element name="PmgRef" type="xs:string" />
+                    <xs:element name="PmgFilter" type="filter" />
+                  </xs:choice>
+                  <xs:choice>
+                    <xs:element name="TargetOrgSid" type="xs:long" />
+                    <xs:element name="TargetOrgRef" type="xs:string" />
+                    <xs:element name="TargetOrgName" type="xs:string" />
+                  </xs:choice>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveDefaultSecurity">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="PmgRef" type="xs:string" />
+              <xs:element name="PmgFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="PmgRef" type="xs:string" />
+              <xs:element name="PmgFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includePmList" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pmgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Pmg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pmgListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Pmg" type="pmgOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pmgOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element name="Publish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PmList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Pm" type="pmOut" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pmOut">
+    <xs:sequence>
+      <xs:element name="AgentSid" type="xs:long" />
+      <xs:element name="RoleSid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

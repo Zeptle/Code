@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ecore/sendAlert" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ecore/sendAlert" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoSendAlert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="to" type="emailAddressList" />
+        <xs:element minOccurs="0" name="cc" type="emailAddressList" />
+        <xs:element minOccurs="0" name="bcc" type="emailAddressList" />
+        <xs:element minOccurs="0" name="replyTo" type="emailAddressList" />
+        <xs:element minOccurs="0" name="sender" type="internetAddress" />
+        <xs:element name="from" type="internetAddress" />
+        <xs:element name="subject" type="xs:string" />
+        <xs:element name="body">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute default="false" name="isHtml" type="xs:boolean" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="emailAddressList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="emailAddress" type="internetAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="internetAddress">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="personal" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

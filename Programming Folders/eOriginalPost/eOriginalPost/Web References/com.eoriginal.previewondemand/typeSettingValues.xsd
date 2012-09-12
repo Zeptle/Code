@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/TypeSettingValues" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <element abstract="true" name="FontType" />
+  <element name="font" substitutionGroup="tsv:FontType">
+    <simpleType>
+      <restriction base="string">
+        <enumeration value="TimesRoman" />
+        <enumeration value="Helvetica" />
+        <enumeration value="Courier" />
+        <enumeration value="Symbol" />
+        <enumeration value="ZapfDingbats" />
+        <enumeration value="Arial" />
+        <enumeration value="ArialBold" />
+        <enumeration value="ArialBoldItalic" />
+        <enumeration value="ArialItalic" />
+        <enumeration value="Brush" />
+        <enumeration value="Campaign" />
+        <enumeration value="Chancery" />
+        <enumeration value="ChopinScript" />
+        <enumeration value="FreeMono" />
+        <enumeration value="FreeMonoBold" />
+        <enumeration value="FreeMonoBoldOblique" />
+        <enumeration value="FreeMonoOblique" />
+        <enumeration value="FreeSans" />
+        <enumeration value="FreeSansBold" />
+        <enumeration value="FreeSansBoldOblique" />
+        <enumeration value="FreeSansOblique" />
+        <enumeration value="FreeSerif" />
+        <enumeration value="FreeSerifBold" />
+        <enumeration value="FreeSerifBoldItalic" />
+        <enumeration value="FreeSerifItalic" />
+        <enumeration value="OldScript" />
+        <enumeration value="WaltDisney" />
+      </restriction>
+    </simpleType>
+  </element>
+  <element name="customFont" substitutionGroup="tsv:FontType">
+    <simpleType>
+      <restriction base="string" />
+    </simpleType>
+  </element>
+  <simpleType name="LineWidth">
+    <restriction base="double">
+      <minExclusive value="0" />
+      <maxInclusive value="2" />
+    </restriction>
+  </simpleType>
+  <simpleType name="FontStyle">
+    <restriction base="string">
+      <enumeration value="Normal" />
+      <enumeration value="Bold" />
+      <enumeration value="Italics" />
+      <enumeration value="Bold-Italics" />
+      <enumeration value="Outline" />
+    </restriction>
+  </simpleType>
+  <simpleType name="Color">
+    <restriction base="string">
+      <pattern value="#[0-9a-f]{6}|Black|Blue|Red|Green|Yellow" />
+    </restriction>
+  </simpleType>
+  <simpleType name="Opacity">
+    <restriction base="integer">
+      <minInclusive value="0" />
+      <maxInclusive value="100" />
+    </restriction>
+  </simpleType>
+  <simpleType name="Alignment">
+    <restriction base="string">
+      <enumeration value="Center" />
+      <enumeration value="Left" />
+      <enumeration value="Right" />
+    </restriction>
+  </simpleType>
+  <simpleType name="VerticalAlignment">
+    <restriction base="string">
+      <enumeration value="Bottom" />
+      <enumeration value="Middle" />
+      <enumeration value="Top" />
+    </restriction>
+  </simpleType>
+  <simpleType name="FontSize">
+    <restriction base="nonNegativeInteger">
+      <maxInclusive value="2000" />
+    </restriction>
+  </simpleType>
+  <simpleType name="Rotation">
+    <restriction base="double">
+      <minInclusive value="0" />
+      <maxExclusive value="360" />
+    </restriction>
+  </simpleType>
+</schema>

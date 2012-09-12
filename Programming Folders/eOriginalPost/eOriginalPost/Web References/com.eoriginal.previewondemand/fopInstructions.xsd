@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ri="http://www.eoriginal.com/FopInstructions" xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/FopInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <complexType name="FopInstructions">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element minOccurs="0" name="xslLocation" type="string" />
+          <element name="paramMap" type="ri:ParameterMap" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ParameterMap">
+    <sequence minOccurs="0" maxOccurs="unbounded">
+      <element name="param" type="ri:Parameter" />
+    </sequence>
+  </complexType>
+  <complexType name="Parameter">
+    <attribute name="name" type="string" use="required" />
+    <attribute name="value" type="string" use="required" />
+  </complexType>
+  <element name="fopInstructions" type="ri:FopInstructions" />
+</schema>

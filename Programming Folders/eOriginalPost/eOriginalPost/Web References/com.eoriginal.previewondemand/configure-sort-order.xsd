@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/ssweb/ConfigureSortOrder" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/ssweb/ConfigureSortOrder" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eoConfigureSortOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="documentList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="dpSid" type="DocumentType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="attachDocumentList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="dpSid" type="UploadDocumentType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="expirationDate" type="xs:date" />
+        <xs:element minOccurs="0" name="rolesList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="role">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="documentList">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="dpSid">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:nonNegativeInteger">
+                                  <xs:attribute name="required" type="xs:boolean" />
+                                  <xs:attribute name="type">
+                                    <xs:simpleType>
+                                      <xs:restriction base="xs:string">
+                                        <xs:enumeration value="STANDARD" />
+                                        <xs:enumeration value="WET_INK" />
+                                      </xs:restriction>
+                                    </xs:simpleType>
+                                  </xs:attribute>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="attachDocumentList">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="dpSid" type="UploadDocumentType" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="transactionSid" type="xs:nonNegativeInteger" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UploadDocumentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+        <xs:attribute name="required" type="xs:boolean" />
+        <xs:attribute fixed="UPLOAD" name="type" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+        <xs:attribute name="required" type="xs:boolean" />
+        <xs:attribute default="STANDARD" name="type">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="STANDARD" />
+              <xs:enumeration value="WET_INK" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

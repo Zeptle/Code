@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns="http://www.eoriginal.com/WrapInXmlInstructions" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/WrapInXmlInstructions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <xsd:complexType name="WrapInXmlInstructions">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ti:TransformationInstructions">
+        <xsd:sequence>
+          <xsd:element name="rootElement" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

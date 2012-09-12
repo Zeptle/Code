@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="tcu.xsd" />
+  <xs:element name="vaultInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="ActionList" type="actionListOut" />
+          <xs:element name="ApgList" type="apgListOut" />
+          <xs:element name="DispList" type="dispListOut" />
+          <xs:element name="TransactionTypeList" type="transactionTypeListOut" />
+          <xs:element name="DptList" type="dptListOut" />
+          <xs:element name="FormFieldsTemplateList" type="formFieldsTemplateListOut" />
+          <xs:element name="GroupList" type="groupListOut" />
+          <xs:element name="IndStdDocList" type="indStdDocListOut" />
+          <xs:element name="IndustryList" type="industryListOut" />
+          <xs:element name="OrgList" type="orgListOut" />
+          <xs:element name="PmgList" type="pmgListOut" />
+          <xs:element name="RoleList" type="roleListOut" />
+          <xs:element name="StateList" type="stateListOut" />
+          <xs:element name="TokenList" type="tokenListOut" />
+          <xs:element name="UserList" type="userListOut" />
+          <xs:element name="WatermarkList" type="watermarkListOut" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="attribute">
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="value" type="xs:string" use="required" />
+    <xs:attribute default="string" name="type" type="type" use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="string" />
+      <xs:enumeration value="float" />
+      <xs:enumeration value="double" />
+      <xs:enumeration value="boolean" />
+      <xs:enumeration value="int" />
+      <xs:enumeration value="dateTime" />
+      <xs:enumeration value="base64Binary" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="simpleParticipant">
+    <xs:sequence>
+      <xs:element name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="middleName" type="xs:string" />
+      <xs:element name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" name="suffix" type="xs:string" />
+      <xs:element name="loginName" type="xs:string" />
+      <xs:element name="organizationName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:long" use="required" />
+  </xs:complexType>
+  <xs:complexType name="error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reason" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="code" type="xs:int" use="required" />
+    <xs:attribute default="0" name="subCode" type="xs:int" use="optional" />
+  </xs:complexType>
+</xs:schema>

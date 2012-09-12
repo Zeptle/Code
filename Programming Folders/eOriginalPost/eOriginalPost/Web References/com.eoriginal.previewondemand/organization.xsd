@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="industry.xsd" />
+  <xs:include schemaLocation="group.xsd" />
+  <xs:include schemaLocation="user.xsd" />
+  <xs:include schemaLocation="action.xsd" />
+  <xs:include schemaLocation="role.xsd" />
+  <xs:include schemaLocation="state.xsd" />
+  <xs:include schemaLocation="token.xsd" />
+  <xs:include schemaLocation="apg.xsd" />
+  <xs:include schemaLocation="pmg.xsd" />
+  <xs:include schemaLocation="disposition.xsd" />
+  <xs:include schemaLocation="dpt.xsd" />
+  <xs:include schemaLocation="transactionType.xsd" />
+  <xs:include schemaLocation="address.xsd" />
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Organization" type="organization" />
+  <xs:element name="OrgList" type="orgList" />
+  <xs:complexType name="simpleOrg">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="FullName" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" type="address" />
+      <xs:element minOccurs="0" name="Url" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryContact" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondaryContact" type="xs:string" />
+      <xs:choice>
+        <xs:element minOccurs="0" name="ParentOrgSid" type="xs:long" />
+        <xs:element minOccurs="0" name="ParentOrgRef" type="xs:string" />
+        <xs:element minOccurs="0" name="ParentOrgName" type="xs:string" />
+      </xs:choice>
+      <xs:element name="MaxBadLoginAttempts" type="xs:int" />
+      <xs:element name="TotalSavedPasswords" type="xs:int" />
+      <xs:element name="DaysPasswordExpires" type="xs:int" />
+      <xs:element name="UserLockoutMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeZone" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordPolicy" type="passwordPolicy" />
+      <xs:element minOccurs="0" name="RoleList" type="simpleRoleList" />
+      <xs:element minOccurs="0" name="ActionList" type="simpleActionList" />
+      <xs:element minOccurs="0" name="StateList" type="simpleStateList" />
+      <xs:element minOccurs="0" name="UserList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="User" type="simpleUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="GroupList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Group" type="simpleGroup" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorityList" type="setAuthorityList" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrgPartRoleList" type="orgPartRoleList" />
+      <xs:element minOccurs="0" name="PmgList" type="simplePmgList" />
+      <xs:element minOccurs="0" name="ApgList" type="simpleApgList" />
+      <xs:element minOccurs="0" name="DispList" type="simpleDispList" />
+      <xs:element minOccurs="0" name="DptList" type="simpleDptList" />
+      <xs:element minOccurs="0" name="TransactionTypeList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="TransactionType" type="simpleTransactionType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="TokenList" type="simpleTokenList" />
+      <xs:element minOccurs="0" name="FormFieldsTemplateList" type="simpleFormFieldsTemplateList" />
+      <xs:element minOccurs="0" name="OrgList" type="simpleOrgList" />
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="simpleOrgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Organization" type="simpleOrg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="organization">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleOrg">
+                <xs:choice>
+                  <xs:element name="IndustrySid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="FullName" type="xs:string" />
+                <xs:element minOccurs="0" name="Address" type="address" />
+                <xs:element minOccurs="0" name="PrimaryContact" type="xs:string" />
+                <xs:element minOccurs="0" name="SecondaryContact" type="xs:string" />
+                <xs:element minOccurs="0" name="Url" type="xs:string" />
+                <xs:element minOccurs="0" name="MaxBadLoginAttempts" type="xs:int" />
+                <xs:element minOccurs="0" name="TotalSavedPasswords" type="xs:int" />
+                <xs:element minOccurs="0" name="DaysPasswordExpires" type="xs:int" />
+                <xs:element minOccurs="0" name="UserLockoutMinutes" type="xs:int" />
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                <xs:element minOccurs="0" name="TimeZone" type="xs:string" />
+                <xs:element minOccurs="0" name="PasswordPolicy" type="passwordPolicy" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="SetParent">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice>
+                  <xs:element name="ParentOrgSid" type="xs:long" />
+                  <xs:element name="ParentOrgRef" type="xs:string" />
+                  <xs:element name="ParentOrgName" type="xs:string" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Activate">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgFilter" type="filter" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Deactivate">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgFilter" type="filter" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="AuthorityList" type="setAuthorityList" />
+                  <xs:element name="OrgPartRoleList" type="orgPartRoleList" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="AuthorityList" type="removeAuthorityList" />
+                  <xs:element name="OrgPartRoleList" type="orgPartRoleList" />
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Move">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgFilter" type="filter" />
+              </xs:choice>
+              <xs:choice>
+                <xs:element name="IndustrySid" type="xs:long" />
+                <xs:element name="IndustryRef" type="xs:string" />
+                <xs:element name="IndustryName" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="OrgRef" type="xs:string" />
+              <xs:element name="OrgFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="OrgRef" type="xs:string" />
+              <xs:element name="OrgFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includeRoleList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeActionList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeStateList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeUserList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeGroupList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeAuthorityList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeOrgPartRoleList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includePmgList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeApgList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeDispList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeDptList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeTransactionTypeList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeOrgList" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authority">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" />
+      <xs:choice>
+        <xs:element name="AgentSid" type="xs:long" />
+        <xs:element name="AgentRef" type="xs:string" />
+        <xs:element name="AgentFilter" type="filter" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeAuthority">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setAuthorityList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Authority" type="authority" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeAuthorityList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Authority" type="removeAuthority" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orgPartRoleList">
+    <xs:sequence>
+      <xs:element name="RoleList">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element maxOccurs="unbounded" name="Role" type="simple" />
+            <xs:element maxOccurs="unbounded" name="RoleRef" type="xs:string" />
+            <xs:element maxOccurs="unbounded" name="RoleFilter" type="filter" />
+            <xs:element maxOccurs="unbounded" name="RoleSid" type="xs:long" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="ParticipantOrgSid" type="xs:long" />
+        <xs:element name="ParticipantOrgRef" type="xs:string" />
+        <xs:element name="ParticipantOrgName" type="xs:string" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Organization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orgListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Organization" type="orgOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orgOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="FullName" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" type="address" />
+      <xs:element minOccurs="0" name="Url" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryContact" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondaryContact" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentOrgSid" type="xs:long" />
+      <xs:element name="MaxBadLoginAttempts" type="xs:int" />
+      <xs:element name="TotalSavedPasswords" type="xs:int" />
+      <xs:element name="DaysPasswordExpires" type="xs:int" />
+      <xs:element name="UserLockoutMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeZone" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordPolicy" type="passwordPolicy" />
+      <xs:element name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RoleList" type="roleListOut" />
+      <xs:element minOccurs="0" name="ActionList" type="actionListOut" />
+      <xs:element minOccurs="0" name="StateList" type="stateListOut" />
+      <xs:element minOccurs="0" name="UserList" type="userListOut" />
+      <xs:element minOccurs="0" name="GroupList" type="groupListOut" />
+      <xs:element minOccurs="0" name="AuthorityList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Authority" type="authorityOut" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="OrgPartRoleList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="OrgPartRole" type="orgPartRoleOut" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="PmgList" type="pmgListOut" />
+      <xs:element minOccurs="0" name="ApgList" type="apgListOut" />
+      <xs:element minOccurs="0" name="DispList" type="dispListOut" />
+      <xs:element minOccurs="0" name="DptList" type="dptListOut" />
+      <xs:element minOccurs="0" name="TransactionTypeList" type="transactionTypeListOut" />
+      <xs:element minOccurs="0" name="OrgList" type="orgListOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authorityOut">
+    <xs:sequence>
+      <xs:element name="AgentSid" type="xs:long" />
+      <xs:element name="Title" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orgPartRoleOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element minOccurs="0" name="RoleSid" type="xs:long" />
+      <xs:element minOccurs="0" name="ParticipantOrgSid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="passwordPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Length" type="xs:int" />
+      <xs:element minOccurs="0" name="LowerCaseChars" type="xs:int" />
+      <xs:element minOccurs="0" name="UpperCaseChars" type="xs:int" />
+      <xs:element minOccurs="0" name="Digits" type="xs:int" />
+      <xs:element minOccurs="0" name="SpecialChars" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

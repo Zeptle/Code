@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:atf="http://www.eoriginal.com/AddTextFieldInstructions" xmlns:tsv="http://www.eoriginal.com/TypeSettingValues" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/AddTextFieldInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <import schemaLocation="typeSettingValues.xsd" namespace="http://www.eoriginal.com/TypeSettingValues" />
+  <complexType name="AddTextFields">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element name="textFieldList" type="atf:TextFieldList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TextFieldList">
+    <sequence>
+      <element maxOccurs="unbounded" ref="atf:TextFieldBase" />
+    </sequence>
+  </complexType>
+  <complexType name="OptionList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="display" type="string" />
+      <element minOccurs="1" maxOccurs="1" name="value" type="string" />
+    </sequence>
+  </complexType>
+  <element abstract="true" name="TextFieldBase" />
+  <element name="textField" substitutionGroup="atf:TextFieldBase">
+    <complexType>
+      <sequence>
+        <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+        <element minOccurs="1" maxOccurs="1" ref="tsv:FontType" />
+        <element minOccurs="1" maxOccurs="1" name="fontStyle" type="tsv:FontStyle" />
+        <element minOccurs="1" maxOccurs="1" name="fontSize" type="tsv:FontSize" />
+        <element minOccurs="1" maxOccurs="1" name="color" type="tsv:Color" />
+        <element minOccurs="0" maxOccurs="1" name="multiline" type="string" />
+        <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="atf:CustomTextProperty" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="checkBox" substitutionGroup="atf:TextFieldBase">
+    <complexType>
+      <sequence>
+        <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+        <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="atf:CustomTextProperty" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="radioButtonGroup" substitutionGroup="atf:TextFieldBase">
+    <complexType>
+      <sequence>
+        <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+        <element minOccurs="1" maxOccurs="unbounded" name="radioButton" type="atf:RadioButton" />
+        <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+        <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="atf:CustomTextProperty" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="listBox" substitutionGroup="atf:TextFieldBase">
+    <complexType>
+      <sequence>
+        <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+        <element minOccurs="1" maxOccurs="unbounded" name="option" type="atf:OptionList" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+        <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="atf:CustomTextProperty" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="comboBox" substitutionGroup="atf:TextFieldBase">
+    <complexType>
+      <sequence>
+        <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+        <element minOccurs="1" maxOccurs="unbounded" name="option" type="atf:OptionList" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+        <element minOccurs="1" maxOccurs="1" name="page" type="integer" />
+        <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="atf:CustomTextProperty" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="RadioButton">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+      <element minOccurs="1" maxOccurs="1" name="value" type="string" />
+      <element minOccurs="1" maxOccurs="1" name="lowerLeftX" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="lowerLeftY" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="upperRightX" type="integer" />
+      <element minOccurs="1" maxOccurs="1" name="upperRightY" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="CustomTextProperty">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string" use="required" />
+      </extension>
+    </simpleContent>
+  </complexType>
+  <element name="addTextFields" type="atf:AddTextFields" />
+</schema>

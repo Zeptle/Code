@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Apg" type="apg" />
+  <xs:element name="ApgList" type="apgList" />
+  <xs:complexType name="ap">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="RoleSid" type="xs:long" />
+        <xs:element name="RoleRef" type="xs:string" />
+        <xs:element name="RoleFilter" type="filter" />
+      </xs:choice>
+      <xs:choice>
+        <xs:element name="ActionSid" type="xs:long" />
+        <xs:element name="ActionRef" type="xs:string" />
+        <xs:element name="ActionFilter" type="filter" />
+      </xs:choice>
+      <xs:choice>
+        <xs:element name="StateSid" type="xs:long" />
+        <xs:element name="StateRef" type="xs:string" />
+        <xs:element name="StateFilter" type="filter" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simpleApg">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" default="true" name="Publish" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ApList">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Ap" type="ap" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="simpleApgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Apg" type="simpleApg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apg">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleApg">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                  <xs:element name="IndustrySid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element name="Publish" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="ApList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="Ap" type="ap" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="ApList">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="Ap" type="ap" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:choice minOccurs="0">
+            <xs:element name="SetDefaultSecurity">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:choice>
+                    <xs:element name="Sid" type="xs:long" />
+                    <xs:element name="ApgRef" type="xs:string" />
+                    <xs:element name="ApgFilter" type="filter" />
+                  </xs:choice>
+                  <xs:choice>
+                    <xs:element name="TargetOrgSid" type="xs:long" />
+                    <xs:element name="TargetOrgRef" type="xs:string" />
+                    <xs:element name="TargetOrgName" type="xs:string" />
+                  </xs:choice>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveDefaultSecurity">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="ApgRef" type="xs:string" />
+              <xs:element name="ApgFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="ApgRef" type="xs:string" />
+              <xs:element name="ApgFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includeApList" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apgList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Apg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apgListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Apg" type="apgOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apgOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element name="Publish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ApList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Ap" type="apOut" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apOut">
+    <xs:sequence>
+      <xs:element name="RoleSid" type="xs:long" />
+      <xs:element name="ActionSid" type="xs:long" />
+      <xs:element name="StateSid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

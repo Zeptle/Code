@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Role" type="role" />
+  <xs:element name="RoleList" type="roleList" />
+  <xs:complexType name="simpleRoleList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Role" type="simple" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simple">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                  <xs:element name="IndustrySid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="RoleRef" type="xs:string" />
+                  <xs:element name="RoleFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="RoleRef" type="xs:string" />
+              <xs:element name="RoleFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="RoleRef" type="xs:string" />
+              <xs:element name="RoleFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="roleList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="roleListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Role" type="roleOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="roleOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" name="Scope" type="xs:int" />
+      <xs:element minOccurs="0" name="OrgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="IndustrySid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

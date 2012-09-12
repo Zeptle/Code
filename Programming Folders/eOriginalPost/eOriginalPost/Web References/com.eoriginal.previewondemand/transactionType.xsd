@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="dpt.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="TransactionType" type="transactionType" />
+  <xs:element name="TransactionTypeList" type="transactionTypeList" />
+  <xs:complexType name="simpleTransactionType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DaysUntilSigningRulesExpire" type="xs:nonNegativeInteger" />
+          <xs:choice minOccurs="0">
+            <xs:element name="StateSid" type="xs:long" />
+            <xs:element name="StateRef" type="xs:string" />
+            <xs:element name="StateFilter" type="filter" />
+          </xs:choice>
+          <xs:choice minOccurs="0">
+            <xs:element name="DispSid" type="xs:long" />
+            <xs:element name="DispRef" type="xs:string" />
+            <xs:element name="DispFilter" type="filter" />
+          </xs:choice>
+          <xs:choice minOccurs="0">
+            <xs:element name="ApgSid" type="xs:long" />
+            <xs:element name="ApgRef" type="xs:string" />
+            <xs:element name="ApgFilter" type="filter" />
+          </xs:choice>
+          <xs:choice minOccurs="0">
+            <xs:element name="PmgSid" type="xs:long" />
+            <xs:element name="PmgRef" type="xs:string" />
+            <xs:element name="PmgFilter" type="filter" />
+          </xs:choice>
+          <xs:element minOccurs="0" default="false" name="CollectFormDataBeforeSending" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DptList">
+            <xs:complexType>
+              <xs:choice>
+                <xs:element maxOccurs="unbounded" name="DptSid" type="xs:long" />
+                <xs:element maxOccurs="unbounded" name="DptRef" type="xs:string" />
+                <xs:element maxOccurs="unbounded" name="DptFilter" type="filter" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="simpleTransactionTypeList">
+    <xs:choice>
+      <xs:element maxOccurs="unbounded" name="TransactionTypeSid" type="xs:long" />
+      <xs:element maxOccurs="unbounded" name="TransactionTypeRef" type="xs:string" />
+      <xs:element maxOccurs="unbounded" name="TransactionType" type="simpleTransactionType" />
+      <xs:element maxOccurs="unbounded" name="TransactionTypeFilter" type="filter" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="transactionType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleTransactionType">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="TransactionTypeRef" type="xs:string" />
+                  <xs:element name="TransactionTypeFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element minOccurs="0" name="DaysUntilSigningRulesExpire" type="xs:nonNegativeInteger" />
+                <xs:choice minOccurs="0">
+                  <xs:element name="StateSid" type="xs:long" />
+                  <xs:element name="StateRef" type="xs:string" />
+                  <xs:element name="StateFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="DispSid" type="xs:long" />
+                  <xs:element name="DispRef" type="xs:string" />
+                  <xs:element name="DispFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="ApgSid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="PmgSid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="CollectFormDataBeforeSending" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="TransactionTypeRef" type="xs:string" />
+                  <xs:element name="TransactionTypeFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="DptList">
+                  <xs:complexType>
+                    <xs:choice>
+                      <xs:element maxOccurs="unbounded" name="DptSid" type="xs:long" />
+                      <xs:element maxOccurs="unbounded" name="DptRef" type="xs:string" />
+                      <xs:element maxOccurs="unbounded" name="DptFilter" type="filter" />
+                    </xs:choice>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="TransactionTypeRef" type="xs:string" />
+                  <xs:element name="TransactionTypeFilter" type="filter" />
+                </xs:choice>
+                <xs:element name="DptList">
+                  <xs:complexType>
+                    <xs:choice>
+                      <xs:element maxOccurs="unbounded" name="DptSid" type="xs:long" />
+                      <xs:element maxOccurs="unbounded" name="DptRef" type="xs:string" />
+                      <xs:element maxOccurs="unbounded" name="DptFilter" type="filter" />
+                    </xs:choice>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element minOccurs="0" name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="TransactionTypeRef" type="xs:string" />
+              <xs:element name="TransactionTypeFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="TransactionTypeRef" type="xs:string" />
+              <xs:element name="TransactionTypeFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includeDptList" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionTypeList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="TransactionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionTypeListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="TransactionType" type="transactionTypeOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionTypeOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" name="DaysUntilSigningRulesExpire" type="xs:nonNegativeInteger" />
+      <xs:element minOccurs="0" name="StateSid" type="xs:long" />
+      <xs:element minOccurs="0" name="DispSid" type="xs:long" />
+      <xs:element minOccurs="0" name="ApgSid" type="xs:long" />
+      <xs:element minOccurs="0" name="PmgSid" type="xs:long" />
+      <xs:element name="CollectFormDataBeforeSending" type="xs:boolean" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DptList" type="dptListOut" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

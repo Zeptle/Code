@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" xmlns:wm="http://www.eoriginal.com/WatermarkInstructions" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://schemas.eoriginal.com/releases/6.11/transform/watermarkInstructions.xsd" namespace="http://www.eoriginal.com/WatermarkInstructions" />
+  <xs:element name="Watermark" type="watermark" />
+  <xs:element name="WatermarkList" type="watermarkList" />
+  <xs:complexType name="watermarkList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Watermark" type="watermark" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="watermark">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:choice>
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+              <xs:element ref="wm:WatermarkInstructions" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:choice>
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:choice>
+                <xs:element name="OrgSid" type="xs:long" />
+                <xs:element name="OrgRef" type="xs:string" />
+                <xs:element name="OrgName" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Add">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MappingList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Mapping">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:choice>
+                            <xs:element name="OrgSid" type="xs:long" />
+                            <xs:element name="OrgRef" type="xs:string" />
+                            <xs:element name="OrgName" type="xs:string" />
+                          </xs:choice>
+                          <xs:choice>
+                            <xs:element maxOccurs="unbounded" name="DptSid" type="xs:long" />
+                            <xs:element maxOccurs="unbounded" name="DptRef" type="xs:string" />
+                            <xs:element maxOccurs="unbounded" name="DptFilter" type="filter" />
+                          </xs:choice>
+                          <xs:choice minOccurs="0">
+                            <xs:element name="StateSid" type="xs:long" />
+                            <xs:element name="StateRef" type="xs:string" />
+                            <xs:element name="StateFilter" type="filter" />
+                          </xs:choice>
+                          <xs:element minOccurs="0" name="DocumentType" type="DocumentType" />
+                          <xs:element minOccurs="0" name="UserAction" type="UserAction" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Remove">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MappingList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Mapping">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:choice>
+                            <xs:element name="OrgSid" type="xs:long" />
+                            <xs:element name="OrgRef" type="xs:string" />
+                            <xs:element name="OrgName" type="xs:string" />
+                          </xs:choice>
+                          <xs:choice>
+                            <xs:element maxOccurs="unbounded" name="DptSid" type="xs:long" />
+                            <xs:element maxOccurs="unbounded" name="DptRef" type="xs:string" />
+                            <xs:element maxOccurs="unbounded" name="DptFilter" type="filter" />
+                          </xs:choice>
+                          <xs:choice minOccurs="0">
+                            <xs:element name="StateSid" type="xs:long" />
+                            <xs:element name="StateRef" type="xs:string" />
+                            <xs:element name="StateFilter" type="filter" />
+                          </xs:choice>
+                          <xs:element minOccurs="0" name="DocumentType" type="DocumentType" />
+                          <xs:element minOccurs="0" name="UserAction" type="UserAction" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UserAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="certifiedPrint" />
+      <xs:enumeration value="destruction" />
+      <xs:enumeration value="export-outbound" />
+      <xs:enumeration value="export" />
+      <xs:enumeration value="retrieveDocument" />
+      <xs:enumeration value="tolec" />
+      <xs:enumeration value="transfer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DocumentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="electronicOriginal" />
+      <xs:enumeration value="eStored" />
+      <xs:enumeration value="eCopy" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="watermarkListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Watermark" type="watermarkOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="watermarkOut">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element ref="wm:WatermarkInstructions" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

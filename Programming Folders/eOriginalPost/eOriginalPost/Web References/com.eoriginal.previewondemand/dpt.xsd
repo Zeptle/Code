@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="simple.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Dpt" type="dpt" />
+  <xs:element name="DptList" type="dptList" />
+  <xs:complexType name="simpleDpt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="simple">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+          <xs:choice minOccurs="0">
+            <xs:element name="IndStdDocSid" type="xs:long" />
+            <xs:element name="IndStdDocRef" type="xs:string" />
+            <xs:element name="IndStdDocFilter" type="filter" />
+          </xs:choice>
+          <xs:choice>
+            <xs:element name="DispSid" type="xs:long" />
+            <xs:element name="DispRef" type="xs:string" />
+            <xs:element name="DispFilter" type="filter" />
+          </xs:choice>
+          <xs:choice>
+            <xs:element name="ApgSid" type="xs:long" />
+            <xs:element name="ApgRef" type="xs:string" />
+            <xs:element name="ApgFilter" type="filter" />
+          </xs:choice>
+          <xs:choice minOccurs="0">
+            <xs:element name="PmgSid" type="xs:long" />
+            <xs:element name="PmgRef" type="xs:string" />
+            <xs:element name="PmgFilter" type="filter" />
+          </xs:choice>
+          <xs:choice minOccurs="0">
+            <xs:element name="StateSid" type="xs:long" />
+            <xs:element name="StateRef" type="xs:string" />
+            <xs:element name="StateFilter" type="filter" />
+          </xs:choice>
+          <xs:element minOccurs="0" default="false" name="StoreEncrypted" type="xs:boolean" />
+          <xs:element minOccurs="0" default="Keep all versions" name="DocumentVersioningPolicy" type="documentVersioningPolicy" />
+          <xs:element minOccurs="0" name="SourceDocumentName" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceDocumentMimetype" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceDocument" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="FormFieldsXmlDocument" type="xs:base64Binary" />
+          <xs:element minOccurs="0" default="false" name="FlattenSourceDocument" type="xs:boolean" />
+          <xs:element minOccurs="0" default="false" name="FlattenFirstVersion" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PropertyList" type="propertyList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="dpt">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simpleDpt">
+                <xs:choice>
+                  <xs:element name="OrgSid" type="xs:long" />
+                  <xs:element name="OrgRef" type="xs:string" />
+                  <xs:element name="OrgName" type="xs:string" />
+                </xs:choice>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="DptRef" type="xs:string" />
+                  <xs:element name="DptFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="IndStdDocSid" type="xs:long" />
+                  <xs:element name="IndStdDocRef" type="xs:string" />
+                  <xs:element name="IndStdDocFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="DispSid" type="xs:long" />
+                  <xs:element name="DispRef" type="xs:string" />
+                  <xs:element name="DispFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="ApgSid" type="xs:long" />
+                  <xs:element name="ApgRef" type="xs:string" />
+                  <xs:element name="ApgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="PmgSid" type="xs:long" />
+                  <xs:element name="PmgRef" type="xs:string" />
+                  <xs:element name="PmgFilter" type="filter" />
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                  <xs:element name="StateSid" type="xs:long" />
+                  <xs:element name="StateRef" type="xs:string" />
+                  <xs:element name="StateFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+                <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+                <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+                <xs:element minOccurs="0" name="StoreEncrypted" type="xs:boolean" />
+                <xs:element minOccurs="0" name="DocumentVersioningPolicy" type="documentVersioningPolicy" />
+                <xs:element minOccurs="0" name="SourceDocumentName" type="xs:string" />
+                <xs:element minOccurs="0" name="SourceDocumentMimetype" type="xs:string" />
+                <xs:element minOccurs="0" name="SourceDocument" type="xs:base64Binary" />
+                <xs:element minOccurs="0" name="FormFieldsXmlDocument" type="xs:base64Binary" />
+                <xs:element minOccurs="0" default="false" name="FlattenSourceDocument" type="xs:boolean" />
+                <xs:element minOccurs="0" default="false" name="FlattenFirstVersion" type="xs:boolean" />
+                <xs:element minOccurs="0" name="PropertyList" type="propertyList" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="DptRef" type="xs:string" />
+              <xs:element name="DptFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Remove">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Sid" type="xs:long" />
+                <xs:element name="DptRef" type="xs:string" />
+                <xs:element name="DptFilter" type="filter" />
+              </xs:choice>
+              <xs:choice>
+                <xs:element name="SourceDocument" type="empty" />
+                <xs:element name="FormFieldsXmlDocument" type="empty" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="DptRef" type="xs:string" />
+              <xs:element name="DptFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includeSourceDocument" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeFormFieldsXml" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dptList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Dpt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simpleDptList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Dpt" type="simpleDpt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="propertyList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Property">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="name" type="xs:string" />
+              <xs:attribute name="value" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dptListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Dpt" type="dptOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dptOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtraData" type="xs:string" />
+      <xs:element minOccurs="0" name="IndStdDocSid" type="xs:long" />
+      <xs:element name="DispSid" type="xs:long" />
+      <xs:element name="ApgSid" type="xs:long" />
+      <xs:element name="PmgSid" type="xs:long" />
+      <xs:element name="StoreEncrypted" type="xs:boolean" />
+      <xs:element name="DocumentVersioningPolicy" type="documentVersioningPolicy" />
+      <xs:element minOccurs="0" name="SourceDocumentName" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceDocumentMimetype" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceDocument" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FormFieldsXmlName" type="xs:string" />
+      <xs:element minOccurs="0" name="FormFieldsXmlDocument" type="xs:string" />
+      <xs:element name="OrgSid" type="xs:long" />
+      <xs:element name="LastUpdateDate" type="xs:dateTime" />
+      <xs:element name="Active" type="xs:boolean" />
+      <xs:element name="FlattenFirstVersion" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="PropertyList" type="propertyList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="documentVersioningPolicy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Keep all versions" />
+      <xs:enumeration value="Keep all signature versions" />
+      <xs:enumeration value="Keep executable and all signature versions" />
+      <xs:enumeration value="Keep executable and last signature version" />
+      <xs:enumeration value="Keep most current version" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

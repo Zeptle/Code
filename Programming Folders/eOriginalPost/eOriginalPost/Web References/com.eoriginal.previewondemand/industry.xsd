@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.eoriginal.com/Tcu" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/Tcu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="organization.xsd" />
+  <xs:include schemaLocation="indStdDoc.xsd" />
+  <xs:include schemaLocation="action.xsd" />
+  <xs:include schemaLocation="role.xsd" />
+  <xs:include schemaLocation="state.xsd" />
+  <xs:include schemaLocation="apg.xsd" />
+  <xs:include schemaLocation="pmg.xsd" />
+  <xs:include schemaLocation="filter.xsd" />
+  <xs:element name="Industry" type="industry" />
+  <xs:element name="IndustryList" type="industryList" />
+  <xs:complexType name="industry">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Create">
+          <xs:complexType>
+            <xs:complexContent mixed="false">
+              <xs:extension base="simple">
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="RoleList" type="simpleRoleList" />
+                  <xs:element minOccurs="0" name="ActionList" type="simpleActionList" />
+                  <xs:element minOccurs="0" name="StateList" type="simpleStateList" />
+                  <xs:element minOccurs="0" name="ApgList" type="simpleApgList" />
+                  <xs:element minOccurs="0" name="IndStdDocList" type="simpleIndStdDocList" />
+                  <xs:element minOccurs="0" name="OrgList" type="simpleOrgList" />
+                  <xs:element minOccurs="0" name="PmgList" type="simplePmgList" />
+                  <xs:element minOccurs="0" name="IndPartRoleList" type="indPartRole" />
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edit">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryFilter" type="filter" />
+                </xs:choice>
+                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                <xs:element minOccurs="0" name="Description" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryFilter" type="filter" />
+                </xs:choice>
+                <xs:element maxOccurs="unbounded" name="IndPartRoleList" type="indPartRole" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice>
+                  <xs:element name="Sid" type="xs:long" />
+                  <xs:element name="IndustryRef" type="xs:string" />
+                  <xs:element name="IndustryFilter" type="filter" />
+                </xs:choice>
+                <xs:element maxOccurs="unbounded" name="IndPartRoleList" type="indPartRole" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Delete">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="IndustryRef" type="xs:string" />
+              <xs:element name="IndustryFilter" type="filter" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Get">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="Sid" type="xs:long" />
+              <xs:element name="IndustryRef" type="xs:string" />
+              <xs:element name="IndustryFilter" type="filter" />
+            </xs:choice>
+            <xs:attribute default="false" name="includeRoleList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeActionList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeStateList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeApgList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includePmgList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeIndStdDocList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeIndPartRoleList" type="xs:boolean" use="optional" />
+            <xs:attribute default="false" name="includeOrgList" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="industryList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Industry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indPartRole">
+    <xs:sequence>
+      <xs:element name="RoleList">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element maxOccurs="unbounded" name="Role" type="simple" />
+            <xs:element maxOccurs="unbounded" name="RoleRef" type="xs:string" />
+            <xs:element maxOccurs="unbounded" name="RoleSid" type="xs:long" />
+            <xs:element maxOccurs="unbounded" name="RoleFilter" type="filter" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="ParticipantOrgSid" type="xs:long" />
+        <xs:element name="ParticipantOrgRef" type="xs:string" />
+        <xs:element name="ParticipantOrgName" type="xs:string" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="industryListOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Industry" type="indOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleList" type="roleListOut" />
+      <xs:element minOccurs="0" name="ActionList" type="actionListOut" />
+      <xs:element minOccurs="0" name="StateList" type="stateListOut" />
+      <xs:element minOccurs="0" name="ApgList" type="apgListOut" />
+      <xs:element minOccurs="0" name="IndStdDocList" type="indStdDocListOut" />
+      <xs:element minOccurs="0" name="OrgList" type="orgListOut" />
+      <xs:element minOccurs="0" name="PmgList" type="pmgListOut" />
+      <xs:element minOccurs="0" name="IndPartRoleList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="IndPartRole" type="indPartRoleOut" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="indPartRoleOut">
+    <xs:sequence>
+      <xs:element name="Sid" type="xs:long" />
+      <xs:element minOccurs="0" name="RoleSid" type="xs:long" />
+      <xs:element minOccurs="0" name="ParticipantOrgSid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

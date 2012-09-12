@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-roles.xsd" filename="configure-roles.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/appendPropertyValueInstructions.xsd" filename="appendPropertyValueInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/encryptionInstructions.xsd" filename="encryptionInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/typeSettingValues.xsd" filename="typeSettingValues.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/mimeTypeConversionInstructions.xsd" filename="mimeTypeConversionInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/editFormFieldInstructions.xsd" filename="editFormFieldInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/wrapInXmlInstructions.xsd" filename="wrapInXmlInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/emptyInstructions.xsd" filename="emptyInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://previewondemand.eoriginal.com/ecoreSOAP/wsdl/ecore-ws.wsdl" filename="ecore-ws.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/watermarkInstructions.xsd" filename="watermarkInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-sort-order.xsd" filename="configure-sort-order.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/addTextFieldInstructions.xsd" filename="addTextFieldInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/fopInstructions.xsd" filename="fopInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/addSigBlockInstructions.xsd" filename="addSigBlockInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/decryptionInstructions.xsd" filename="decryptionInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/tolecMessage.xsd" filename="tolecMessage.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/2005/10/31/xmldsig-core-schema.xsd" filename="xmldsig-core-schema.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/transformation-instruction-set.xsd" filename="transformation-instruction-set.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/ssweb/configure-invitation.xsd" filename="configure-invitation.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/addTextDataInstructions.xsd" filename="addTextDataInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transform/addSignatureInstructions.xsd" filename="addSignatureInstructions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/permission.xsd" filename="permission.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/filter.xsd" filename="filter.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/user.xsd" filename="user.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/transactionType.xsd" filename="transactionType.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/pmg.xsd" filename="pmg.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/destruction.xsd" filename="destruction.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/industry.xsd" filename="industry.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/sendAlert.xsd" filename="sendAlert.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/action.xsd" filename="action.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/fft.xsd" filename="fft.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/state.xsd" filename="state.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/externalOrgConfig.xsd" filename="externalOrgConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/token.xsd" filename="token.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/global.xsd" filename="global.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/indStdDoc.xsd" filename="indStdDoc.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://previewondemand.eoriginal.com/ecoreSOAP/wsdl/ecore-ws-schema.xsd" filename="ecore-ws-schema.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/watermark.xsd" filename="watermark.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://previewondemand.eoriginal.com/ecoreSOAP/wsdl/ecore-ws-datatypes.xsd" filename="ecore-ws-datatypes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/organization.xsd" filename="organization.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/group.xsd" filename="group.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/externalVault.xsd" filename="externalVault.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/tcu.xsd" filename="tcu.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/transfer.xsd" filename="transfer.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/dpt.xsd" filename="dpt.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/simple.xsd" filename="simple.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/ssweb/get-auth-code.xsd" filename="get-auth-code.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/address.xsd" filename="address.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/common.xsd" filename="common.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/reports/searchHistory.xsd" filename="searchHistory.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/disposition.xsd" filename="disposition.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/role.xsd" filename="role.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/export.xsd" filename="export.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/vault-info.xsd" filename="vault-info.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/admin/apg.xsd" filename="apg.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://schemas.eoriginal.com/releases/6.11/print.xsd" filename="print.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

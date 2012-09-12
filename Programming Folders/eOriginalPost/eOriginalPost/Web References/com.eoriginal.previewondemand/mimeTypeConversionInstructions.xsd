@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/MimeTypeConversionInstructions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <xsd:complexType name="MimeTypeConversionInstructions">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ti:TransformationInstructions">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="config">
+            <xsd:complexType>
+              <xsd:attribute name="inputMimeType" type="xsd:string" use="required" />
+              <xsd:attribute name="outputMimeType" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="default">
+            <xsd:complexType>
+              <xsd:attribute name="outputMimeType" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

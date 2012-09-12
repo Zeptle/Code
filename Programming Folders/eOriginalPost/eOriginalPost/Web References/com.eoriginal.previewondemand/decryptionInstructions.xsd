@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/DecryptionInstructions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <xsd:complexType name="DecryptionInstructions">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ti:TransformationInstructions" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

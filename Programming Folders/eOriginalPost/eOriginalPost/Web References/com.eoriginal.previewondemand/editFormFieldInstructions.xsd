@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:asb="http://www.eoriginal.com/AddSigBlocksInstructions" xmlns:ti="http://www.eoriginal.com/TransformationInstructionsSet" xmlns:esb="http://www.eoriginal.com/EditFormFieldInstructions" elementFormDefault="qualified" targetNamespace="http://www.eoriginal.com/EditFormFieldInstructions" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="transformation-instruction-set.xsd" namespace="http://www.eoriginal.com/TransformationInstructionsSet" />
+  <import schemaLocation="addSigBlockInstructions.xsd" namespace="http://www.eoriginal.com/AddSigBlocksInstructions" />
+  <element name="formFields" type="esb:FormFields" />
+  <complexType name="FormFields">
+    <complexContent mixed="false">
+      <extension base="ti:TransformationInstructions">
+        <sequence>
+          <element name="formFieldList" type="esb:FormFieldList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FormFieldList">
+    <sequence>
+      <element maxOccurs="unbounded" name="formField" type="esb:FormField" />
+    </sequence>
+  </complexType>
+  <complexType name="FormField">
+    <sequence>
+      <element name="name" type="string" />
+      <element minOccurs="0" name="newName" type="string" />
+      <element minOccurs="0" name="lowerLeftX" type="float" />
+      <element minOccurs="0" name="lowerLeftY" type="float" />
+      <element minOccurs="0" name="upperRightX" type="float" />
+      <element minOccurs="0" name="upperRightY" type="float" />
+      <element minOccurs="0" maxOccurs="unbounded" name="customProperty" type="asb:CustomProperty" />
+    </sequence>
+  </complexType>
+</schema>
